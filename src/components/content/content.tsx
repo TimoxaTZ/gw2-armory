@@ -7,6 +7,10 @@ export const Content = () => {
             <div className={styles.inner}>
                 <h1 className={styles.title}>About GW2 Armory</h1>
             </div>
+            <div className={styles.inner}>
+                <a className={styles.button} href='#'>Learn more</a>
+            </div>
+
 
             <p>You need to use your personal API-key, which
                 you can

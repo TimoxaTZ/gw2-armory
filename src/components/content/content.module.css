@@ -15,8 +15,8 @@
     height: 3px;
 
     background-color: #fff;
-    /*отступ сверху 20, слева справа авто*/
-    margin: 15px auto 0;
+    /*отступ сверху 20, слева справа авто снизу 25*/
+    margin: 20px auto 25px;
 
 }
 
@@ -24,10 +24,44 @@
     width: 100%;
     max-width: 880px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .intro {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.button {
+    text-align: center;
+    line-height: 1;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    /*толщина рамки и цвет*/
+    border: 3px solid #fff;
+    /*отступы от рамки*/
+    padding: 8px 25px;
+
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    /*при изменении цвета он будет проиходить плавно*/
+    transition: color 0.2s linear;
+}
+
+.button:after {
+     /*плавное отображение при отрисовке*/
+    transition: opacity 0.2s linear;
+}
+.button:hover {
+    color: #fce38a;
+    border-color: #fce38a;
+}
+/*показать полоску после наведения*/
+.button:hover:after {
+    opacity: 1;
 }
