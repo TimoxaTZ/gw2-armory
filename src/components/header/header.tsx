@@ -15,8 +15,8 @@ export const Header = () => {
                         <img src={logo} className={styles.logo}/> Guild wars 2 armory
                     </div>
                     <nav className={styles.nav}>
-                        <a href='#' className={styles.nav_link}>About</a>
-                        <a href='#' className={styles.nav_link}>Login</a>
+                        <a href='/' className={styles.nav_link}>About</a>
+                        <a href='/login' className={styles.nav_link}>Login</a>
                     </nav>
                 </div>
             </div>

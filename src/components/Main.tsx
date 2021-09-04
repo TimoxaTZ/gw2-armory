@@ -5,14 +5,18 @@ import {Navbar} from "./navbar/navbar";
 import {Content} from "./content/content";
 import {Footer} from "./footer/footer";
 import {Container} from "@material-ui/core";
+import {Route} from "react-router-dom";
+import {Login} from "../features/Login/Login";
 
 
 export const Main = () => {
     return (
         <Container className={styles.style} >
-                <Header/>
+            <Header/>
+            <Route exact path={'/'} render={() => <Content/>}/>
+            <Route exact path={'/login'} render={() => <Login/>}/>
                 {/*<Navbar/>*/}
-                <Content/>
+
                 {/*<Footer/>*/}
         </Container>
     )
