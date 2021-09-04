@@ -4,14 +4,16 @@ import {Header} from "./header/header";
 import {Navbar} from "./navbar/navbar";
 import {Content} from "./content/content";
 import {Footer} from "./footer/footer";
+import {Container} from "@material-ui/core";
+
 
 export const Main = () => {
     return (
-        <div className={styles.intro}>
-            <Header/>
-            {/*<Navbar/>*/}
-            <Content/>
-            {/*<Footer/>*/}
-        </div>
+        <Container className={styles.style} >
+                <Header/>
+                {/*<Navbar/>*/}
+                <Content/>
+                {/*<Footer/>*/}
+        </Container>
     )
 }

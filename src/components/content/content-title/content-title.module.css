@@ -1,0 +1,35 @@
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "GWTwoFont";
+    font-size: 60px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 3px 0 0 rgba(255, 0, 59, 0.54);
+    /*justify-content: center;*/
+    /*position: relative;*/
+}
+
+/*полоска под тайтлом*/
+.title:after {
+    content: "";
+    /*display: block;*/
+    width: 60px;
+    height: 3px;
+
+    background-color: #fff;
+    /*отступ сверху 20, слева справа авто снизу 25*/
+    margin: 20px auto 25px;
+
+}
+
+.inner {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+}
