@@ -7,6 +7,7 @@ import {Footer} from "./footer/footer";
 import {Container} from "@material-ui/core";
 import {Route} from "react-router-dom";
 import {Login} from "../features/Login/Login";
+import Huynya from "../huynya";
 
 
 export const Main = () => {

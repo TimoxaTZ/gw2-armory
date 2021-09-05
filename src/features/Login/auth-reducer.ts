@@ -12,7 +12,13 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
             }
         }).catch((error) => {
     })
+
 }
+
+// export const login2TC = (data: LoginParamsType) => (dispatch: Dispatch) => {
+//     const response = authApi.login(data)
+//     if (response.)
+// }
 
 export const logoutTC = () => (dispatch: Dispatch) => {
     authApi.logout().then(res => {

@@ -17,8 +17,12 @@ export type LoginParamsType = {
 }
 
 export const authApi = {
-    login(data: LoginParamsType) {
-        return instance.post<ResponseType<{userId?: number}>>('auth/login', data)
+    // login(data: LoginParamsType) {
+    //     return instance.post<ResponseType<{userId?: number}>>('auth/login', data)
+    // },
+
+    async login(data: LoginParamsType) {
+        return await instance.post<ResponseType<{userId?: number}>>('auth/login', data)
     },
 
     logout(){
