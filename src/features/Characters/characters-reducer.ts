@@ -1,13 +1,13 @@
 import {Dispatch} from "redux";
-import {ApiKeyType, armoryApi, CharacterType} from "../../api/gw2-api";
+import {armoryApi, CharacterType} from "../../api/gw2-api";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 
-export const getCharactersTC = (apiKey: ApiKeyType) => async (dispatch: Dispatch) => {
+export const getCharactersTC = (apiKey: string) => async (dispatch: Dispatch) => {
     try {
         const res = await armoryApi.getCharacters(apiKey)
         if (res.data !== null) {
-            dispatch(getCharactersAC({characters: res.data.data}))
+            dispatch(getCharactersAC({characters: res.data}))
         }
     }
     catch (error: any) {

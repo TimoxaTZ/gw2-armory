@@ -43,29 +43,21 @@ export type ResponseType<D = {}> = {
 
 const instanceArmory = axios.create({
     baseURL: "https://api.guildwars2.com/v2/",
-    withCredentials: true,
-    // headers: {
+    // withCredentials: true,
+    headers: {
+        'Access-Control-Allow-Origin': "*"
+        // "Access-Control-Allow-Origin": "*"
     //     "API-KEY": "d0c77b6f-d8e9-4ded-8d84-4e0164eb57c1"
-    // }
+    }
 })
 
 export const armoryApi = {
-    async getCharacters(apiKey: ApiKeyType) {
+    async getCharacters(apiKey: string) {
         return await instanceArmory.get<CharactersResponseType>('characters/?access_token='+apiKey)
     }
 }
 
-export type ApiKeyType = {
-    ApiKey: string
-}
+export type CharacterType = string;
 
-export type CharacterType = {
-    id: number,
-    character: string
-}
-
-export type CharactersResponseType = {
-    // StatusCode: 200 | 400
-    data: Array<CharacterType>;
-}
+export type CharactersResponseType = Array<CharacterType>;
 
