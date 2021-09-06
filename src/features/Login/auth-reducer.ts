@@ -3,15 +3,17 @@ import {authApi, LoginParamsType} from "../../api/gw2-api";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 
-export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
-    authApi.login(data)
-        .then(res => {
-            if (res.data.resultCode === 0) {
-                dispatch(setIsLoggedInAC({value: true}))
-            } else {
-            }
-        }).catch((error) => {
-    })
+export const loginTC = (data: LoginParamsType) => async(dispatch: Dispatch) => {
+   try {
+       const res = await authApi.login(data)
+       if (res.data.resultCode === 0) {
+           dispatch(setIsLoggedInAC({value: true}))
+       } else {
+           return
+       }
+   } catch (error: any) {
+       return
+   }
 
 }
 
@@ -20,12 +22,21 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
 //     if (response.)
 // }
 
-export const logoutTC = () => (dispatch: Dispatch) => {
-    authApi.logout().then(res => {
-            dispatch(setIsLoggedInAC({value: false}))
-    }).catch((error) => {
-        return
-    })
+export const logoutTC = () => async (dispatch: Dispatch) => {
+   try {
+       const res = await authApi.logout()
+       if (res.data.resultCode === 0) {
+           // dispatch(setIsLoggedInAC(false)) //removed by redux-toolkit+immerjs
+           dispatch(setIsLoggedInAC({value: false}))
+       }
+       else {
+           return
+       }
+       dispatch(setIsLoggedInAC({value: false}))
+   } catch (error: any) {
+       return
+   }
+
 }
 
 const initialState = {

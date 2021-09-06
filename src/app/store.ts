@@ -2,10 +2,12 @@ import {combineReducers} from "redux";
 import thunkMiddleware from "redux-thunk";
 import {authReducer} from "../features/Login/auth-reducer";
 import {configureStore} from "@reduxjs/toolkit";
+import {charactersReducer} from "../features/Characters/characters-reducer";
 
 
 const rootReducer = combineReducers({
-    auth: authReducer
+    auth: authReducer,
+    characters: charactersReducer
 })
 
 export type AppRootStateType = ReturnType<RootReducerType>

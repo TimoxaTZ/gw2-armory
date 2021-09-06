@@ -46,7 +46,7 @@ export const Login = () => {
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn);
 
     if (isLoggedIn) {
-        return <Redirect to={"/"}/>
+        return <Redirect to={"/characters"}/>
     }
 
     return <Grid container justify="center">

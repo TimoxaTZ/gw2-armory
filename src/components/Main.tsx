@@ -8,6 +8,7 @@ import {Container} from "@material-ui/core";
 import {Route} from "react-router-dom";
 import {Login} from "../features/Login/Login";
 import Huynya from "../huynya";
+import {Characters} from "../features/Characters/Characters";
 
 
 export const Main = () => {
@@ -16,6 +17,7 @@ export const Main = () => {
             <Header/>
             <Route exact path={'/'} render={() => <Content/>}/>
             <Route exact path={'/login'} render={() => <Login/>}/>
+            <Route exact path={'/characters'} render={() => <Characters/>}/>
                 {/*<Navbar/>*/}
 
                 {/*<Footer/>*/}
