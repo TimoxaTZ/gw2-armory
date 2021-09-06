@@ -1,6 +1,7 @@
 import axios from "axios";
+import {instance} from "./instance";
 
-const instance = axios.create({
+const authInstance = axios.create({
     baseURL: "https://social-network.samuraijs.com/api/1.1/",
     withCredentials: true,
     headers: {
@@ -21,15 +22,15 @@ export const authApi = {
     // },
 
     async login(data: LoginParamsType) {
-        return await instance.post<ResponseType<{userId?: number}>>('auth/login', data)
+        return await authInstance.post<ResponseType<{userId?: number}>>('auth/login', data)
     },
 
     async logout(){
-        return await instance.delete<ResponseType<{userId?: number}>>('auth/login')
+        return await authInstance.delete<ResponseType<{userId?: number}>>('auth/login')
     },
 
     async me(){
-        return await instance.get<ResponseType<{id: number, email: string, login: string}>>('auth/me')
+        return await authInstance.get<ResponseType<{id: number, email: string, login: string}>>('auth/me')
     }
 }
 
@@ -41,23 +42,38 @@ export type ResponseType<D = {}> = {
 
 //GW2 Api
 
-const instanceArmory = axios.create({
-    baseURL: "https://api.guildwars2.com/v2/",
-    // withCredentials: true,
-    headers: {
-        'Access-Control-Allow-Origin': "*"
-        // "Access-Control-Allow-Origin": "*"
-    //     "API-KEY": "d0c77b6f-d8e9-4ded-8d84-4e0164eb57c1"
-    }
-})
 
 export const armoryApi = {
     async getCharacters(apiKey: string) {
-        return await instanceArmory.get<CharactersResponseType>('characters/?access_token='+apiKey)
+        return await instance.get<CharacterType[]>('v2/characters?ids=all&access_token='+apiKey)
     }
 }
 
-export type CharacterType = string;
+export type CharacterType = {
+    "name": string,
+    // "race"?: string,
+    // "gender"?: string,
+    // "flags"?: [],
+    // "profession"?: string,
+    // "level"?: 80,
+    // "guild"?: string,
+    // "age"?: 3395169,
+    // "created"?: "2014-12-18T16:15:00Z",
+    // "deaths"?: 4028,
+    // "crafting"?: [],
+    // "title"?: 365,
+    // "backstory"?: [],
+    // "wvw_abilities"?: [],
+    // "equipment"?: [],
+    // "recipes"?: [],
+    // "training"?: [],
+    // "bags"?: [],
+    // "equipment_pvp"?: {},
+    // "specializations"?: {},
+    // "skills"?: {}
+};
 
-export type CharactersResponseType = Array<CharacterType>;
+export type CharactersResponseType = {
+    data:CharacterType []
+};
 
