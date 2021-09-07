@@ -38,7 +38,7 @@
     opacity: 1;
 }
 
-.button_style1_container {
+.button_style_container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,8 +46,8 @@
     /*background: #0e1538;*/
 }
 
-.button_style1:before,
-.button_style1:after {
+.button_style:before,
+.button_style:after {
     content: '';
     position: absolute;
     inset: 0;
@@ -55,45 +55,7 @@
     background: #f00;
 }
 
-.button_style1_nav {
-    position: relative;
-    width: 160px;
-    height: 60px;
-    display: inline-block;
-    background: #fff;
-    margin: 10px;
-}
-
-
-.button_style1_nav:before,
-.button_style1_nav:after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: #f00;
-    transition: 0.5s;
-}
-
-.button_style1_nav:hover:before {
-    inset: -3px;
-}
-.button_style1_nav:hover:after {
-    inset: -3px;
-    filter: blur(10px);
-}
-
-.button_style1_nav:nth-child(1):before,
-.button_style1_nav:nth-child(1):after {
-    background: linear-gradient(45deg,#00ccff, #0e1538, #0e1538,#d400d4);
-}
-
-.button_style1_nav:nth-child(2):before,
-.button_style1_nav:nth-child(2):after {
-    background: linear-gradient(45deg,#ff075b, #0e1538, #0e1538,#1aff22);
-}
-
-
-.button_style1_nav_span {
+.button_style_nav_span {
     position: absolute;
     top: 0;
     left: 0;
@@ -113,7 +75,7 @@
     overflow: hidden;
 }
 
-.button_style1_nav_span:before {
+.button_style_nav_span:before {
     content: '';
     position: absolute;
     top: 0;
@@ -123,4 +85,75 @@
     background: rgba(255,255,255,0.075);
     transform: skew(25deg);
 }
+
+/*-----------------------HIGHLIGHT BUTTON STYLE 1------------------------------*/
+.button_style1_nav {
+    position: relative;
+    width: 160px;
+    height: 60px;
+    display: inline-block;
+    background: #fff;
+    margin: 10px;
+}
+.button_style1_nav:before,
+.button_style1_nav:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #f00;
+    transition: 0.5s;
+    background: linear-gradient(45deg,#ff075b, #0e1538, #0e1538,#1aff22);
+}
+.button_style1_nav:hover:before {
+    inset: -3px;
+}
+.button_style1_nav:hover:after {
+    inset: -3px;
+    filter: blur(10px);
+}
+/*-----------------------HIGHLIGHT BUTTON STYLE 1------------------------------*/
+
+/*-----------------------HIGHLIGHT BUTTON STYLE 2------------------------------*/
+
+.button_style2_nav {
+    position: relative;
+    width: 160px;
+    height: 60px;
+    display: inline-block;
+    background: #fff;
+    margin: 10px;
+}
+.button_style2_nav:before,
+.button_style2_nav:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #f00;
+    transition: 0.5s;
+    background: linear-gradient(45deg,#00ccff, #0e1538, #0e1538,#d400d4);
+}
+.button_style2_nav:hover:before {
+    inset: -3px;
+}
+.button_style2_nav:hover:after {
+    inset: -3px;
+    filter: blur(10px);
+}
+/*-----------------------HIGHLIGHT BUTTON STYLE 2------------------------------*/
+
+
+
+/*.button_style1_nav:nth-child(1):before,*/
+/*.button_style1_nav:nth-child(1):after {*/
+/*    background: linear-gradient(45deg,#00ccff, #0e1538, #0e1538,#d400d4);*/
+/*}*/
+
+/*.button_style1_nav:nth-child(2):before,*/
+/*.button_style1_nav:nth-child(2):after {*/
+/*    background: linear-gradient(45deg,#ff075b, #0e1538, #0e1538,#1aff22);*/
+/*}*/
+
+
+
+
 

@@ -64,7 +64,15 @@ export type CharacterType = {
     // "title"?: 365,
     // "backstory"?: [],
     // "wvw_abilities"?: [],
-    // "equipment"?: [],
+    "equipment"?: [
+        {
+            id: number,
+            slot: string,
+            upgrades: [],
+            skin: number,
+            binding: string,
+            bound_to: string
+        }],
     // "recipes"?: [],
     // "training"?: [],
     // "bags"?: [],
