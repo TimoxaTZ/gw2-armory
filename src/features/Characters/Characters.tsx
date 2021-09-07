@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
-import {Grid, Paper} from "@material-ui/core";
-import {useDispatch, useSelector} from "react-redux";
-import styles from "../../components/content/content-filling/content-filling.module.css";
-import {CharacterType} from "../../api/gw2-api";
-import {AppRootStateType} from "../../app/store";
+import {Grid} from "@material-ui/core";
+import {useDispatch} from "react-redux";
+import styles from './characters.module.css'
 import {getCharactersTC} from "./characters-reducer";
 import {useAppSelector} from "../../app/useAppSelector";
+import {inspect} from "util";
 
 
 export const Characters = () => {
@@ -19,18 +18,19 @@ export const Characters = () => {
     }, [dispatch])
 
     return (
-        <div>
-            <div className={styles.intro}>
-                <Grid
-                    direction="column"
+        <div className={styles.intro}>
+                <Grid container
+                    direction="row"
                     item xs zeroMinWidth
                     justifyContent="center"
                     alignItems="center">
-                    <div className={styles.textfield}>
-                        {characters.map(c => <div>{c.name}</div>)}
-                    </div>
+
+                    {characters.map(c =>
+
+                                <div className={styles.textfield}>
+                                        {c.name}
+                                </div>)}
                 </Grid>
-            </div>
         </div>
     )
 }
