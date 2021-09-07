@@ -5,6 +5,7 @@ import styles from './characters.module.css'
 import {getCharactersTC} from "./characters-reducer";
 import {useAppSelector} from "../../app/useAppSelector";
 import {inspect} from "util";
+import {NavLink} from "react-router-dom";
 
 
 export const Characters = () => {
@@ -28,7 +29,12 @@ export const Characters = () => {
                     {characters.map(c =>
 
                                 <div className={styles.textfield}>
-                                        {c.name}
+                                    <NavLink className={styles.nav} to={`/characters/${c.name}`}>
+                                        <span>
+                                             {c.name}
+                                        </span>
+                                    </NavLink>
+                                    {/*{c.name}*/}
                                 </div>)}
                 </Grid>
         </div>

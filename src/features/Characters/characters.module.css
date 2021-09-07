@@ -25,6 +25,16 @@
     margin: 20px;
 }
 
+.nav {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.68);
+}
+
+.nav:hover {
+    color: rgba(255, 218, 162, 0.82);
+}
+
+
 .textfield:after {
     /*плавное отображение при отрисовке*/
     transition: opacity 0.2s linear;
