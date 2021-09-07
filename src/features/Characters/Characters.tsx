@@ -38,7 +38,6 @@ export const Characters = () => {
                                     </NavLink>
 
                                     {/*<Route exact path={`/characters/${c.name}`} render={() => <Character/>}/>*/}
-                                    {/*<Route exact path={`/characters/Cofresi`} render={() => <Login/>}/>*/}
 
                                 </div>)}
                 </Grid>

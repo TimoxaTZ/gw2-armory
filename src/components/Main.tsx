@@ -15,9 +15,7 @@ import {Character} from "../features/Characters/Character/Character";
 
 export const Main = () => {
 
-    // const characters = useAppSelector(state => state.characters.characters)
-    // characters.map(c => <Route exact path={`/characters/${c.name}`} render={() => <Character/>}/>)
-
+    const characters = useAppSelector(state => state.characters.characters)
 
         return (
         <Container className={styles.style} >
@@ -25,8 +23,9 @@ export const Main = () => {
             <Route exact path={'/'} render={() => <Content/>}/>
             <Route exact path={'/login'} render={() => <Login/>}/>
             <Route exact path={'/characters'} render={() => <Characters/>}/>
-
-
+            {characters.map(c => {
+                return <Route exact path={`/characters/${c.name}`} render={() => <Character name={c.name}/>}/>
+            })}
                 {/*<Navbar/>*/}
                 {/*<Footer/>*/}
         </Container>
