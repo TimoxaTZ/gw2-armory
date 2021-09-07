@@ -19,7 +19,6 @@ export const Main = () => {
             <Route exact path={'/login'} render={() => <Login/>}/>
             <Route exact path={'/characters'} render={() => <Characters/>}/>
                 {/*<Navbar/>*/}
-
                 {/*<Footer/>*/}
         </Container>
     )

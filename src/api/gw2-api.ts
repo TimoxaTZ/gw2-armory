@@ -73,7 +73,7 @@ export type CharacterType = {
     // "skills"?: {}
 };
 
-export type CharactersResponseType = {
-    data:CharacterType []
-};
+// export type CharactersResponseType = {
+//     data:CharacterType []
+// };
 
