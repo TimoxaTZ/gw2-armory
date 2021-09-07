@@ -38,6 +38,8 @@
     opacity: 1;
 }
 
+/*----------------------------------------------------------------------*/
+
 .button_style_container {
     display: flex;
     justify-content: center;
@@ -93,7 +95,7 @@
     height: 60px;
     display: inline-block;
     background: #fff;
-    margin: 10px;
+    margin: 20px;
 }
 .button_style1_nav:before,
 .button_style1_nav:after {

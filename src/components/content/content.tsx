@@ -11,10 +11,14 @@ export const Content = () => {
     return (
         <div className={styles.style}>
             <ContentTitle/>
-            <Button buttonUrl={'/characters'} buttonName='Characters' buttonStyle={1}/>
+
+            <div className={styles.buttons}>
+                <Button buttonUrl={'/characters'} buttonName='Characters' buttonStyle={2}/>
+                <Button buttonUrl={'/login'} buttonName='Change API token'buttonStyle={1}/>
+            </div>
 
             <ContentFilling/>
-            <Button buttonUrl={'/login'} buttonName='Change API token'buttonStyle={2}/>
+
         </div>
     )
 }
