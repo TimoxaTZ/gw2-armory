@@ -6,7 +6,11 @@ import {Grid} from "@material-ui/core";
 
 export const ItemsBlock = (props: CharacterType) => {
 
-    const characterItems = useAppSelector(state => state.characters.characters.filter(c => c.name === props.name).map(currentCharacter => currentCharacter.equipment)[0])
+    // const characterItems = useAppSelector(state => state.characters.characters.filter(c => c.name === props.name).map(currentCharacter => currentCharacter.equipment)[0])
+    const characters = useAppSelector(state => state.characters.characters)
+    const characterObj = characters.filter(c => c.name === props.name)
+    const characterItems = characterObj.map(currentCharacter => currentCharacter.equipment)[0]
+
 
     const helm = characterItems?.filter(c => c.slot === 'Helm')[0];
     const shoulders = characterItems?.filter(c => c.slot === 'Shoulders')[0];
@@ -22,7 +26,6 @@ export const ItemsBlock = (props: CharacterType) => {
     const ring1 = characterItems?.filter(c => c.slot === 'Ring1')[0];
     const ring2 = characterItems?.filter(c => c.slot === 'Ring2')[0];
 
-
     const weaponA1 = characterItems?.filter(c => c.slot === 'WeaponA1')[0];
     const weaponA2 = characterItems?.filter(c => c.slot === 'WeaponA2')[0];
     const weaponB1 = characterItems?.filter(c => c.slot === 'WeaponB1')[0];
@@ -36,8 +39,8 @@ export const ItemsBlock = (props: CharacterType) => {
     const axe = characterItems?.filter(c => c.slot === 'Axe')[0];
     const pick = characterItems?.filter(c => c.slot === 'Pick')[0];
 
-    const equipment = {helm, shoulders, coat, gloves, leggins, boots, backpack, trinket1, trinket2, amulet, ring1, ring2, weaponA1, weaponA2, weaponB1, weaponB2, helmAquatic, weaponAquaticA, weaponAquaticB, sickle, axe, pick}
-    console.log(equipment)
+    // const equipment = {helm, shoulders, coat, gloves, leggins, boots, backpack, trinket1, trinket2, amulet, ring1, ring2, weaponA1, weaponA2, weaponB1, weaponB2, helmAquatic, weaponAquaticA, weaponAquaticB, sickle, axe, pick}
+    // console.log(equipment)
 
     return (
         <div className={styles.intro}>
@@ -48,84 +51,84 @@ export const ItemsBlock = (props: CharacterType) => {
                   justifyContent="center"
                   alignItems="center">
                     <div >
-                    {helm && shoulders && coat && gloves && leggins && boots !== undefined ?  <div className={styles.textfield}>
-                        {helm !== undefined ? <div className={styles.textfield}>
+                    {helm && shoulders && coat && gloves && leggins && boots && <div className={styles.textfield}>
+                        {helm && <div className={styles.textfield}>
                             {helm?.slot} {helm?.id}
-                        </div> : null }
-                        {shoulders !== undefined ? <div className={styles.textfield}>
+                        </div>}
+                        {shoulders  ? <div className={styles.textfield}>
                             {shoulders?.slot} {shoulders?.id}
                         </div> : null }
-                        {coat !== undefined ? <div className={styles.textfield}>
+                        {coat  ? <div className={styles.textfield}>
                             {coat?.slot} {coat?.id}
                         </div> : null }
-                        {gloves !== undefined ? <div className={styles.textfield}>
+                        {gloves ? <div className={styles.textfield}>
                             {gloves?.slot} {gloves?.id}
                         </div> : null }
-                        {leggins !== undefined ? <div className={styles.textfield}>
+                        {leggins  ? <div className={styles.textfield}>
                             {leggins?.slot} {leggins?.id}
                         </div> : null }
-                        {boots !== undefined ? <div className={styles.textfield}>
+                        {boots  ? <div className={styles.textfield}>
                             {boots?.slot} {boots?.id}
                         </div> : null }
-                    </div> : null}
-                    {backpack && trinket1 && trinket2 && amulet && ring1 && ring2 !== undefined ? <div className={styles.textfield}>
-                        {backpack !== undefined ? <div className={styles.textfield}>
+                    </div>}
+                    {backpack && trinket1 && trinket2 && amulet && ring1 && ring2 && <div className={styles.textfield}>
+                        {backpack && <div className={styles.textfield}>
                             {backpack?.slot} {backpack?.id}
-                        </div> : null }
-                        {trinket1 !== undefined ? <div className={styles.textfield}>
+                        </div>}
+                        {trinket1 &&  <div className={styles.textfield}>
                             {trinket1?.slot} {trinket1?.id}
-                        </div> : null }
-                        {trinket2 !== undefined ? <div className={styles.textfield}>
+                        </div>}
+                        {trinket2 &&  <div className={styles.textfield}>
                             {trinket2?.slot} {trinket2?.id}
-                        </div> : null }
-                        {amulet !== undefined ? <div className={styles.textfield}>
+                        </div>}
+                        {amulet &&  <div className={styles.textfield}>
                             {amulet?.slot} {amulet?.id}
-                        </div> : null }
-                        {ring1 !== undefined ? <div className={styles.textfield}>
+                        </div>}
+                        {ring1 &&  <div className={styles.textfield}>
                             {ring1?.slot} {ring1?.id}
-                        </div> : null }
-                        {ring2 !== undefined ? <div className={styles.textfield}>
+                        </div>}
+                        {ring2 &&  <div className={styles.textfield}>
                             {ring2?.slot} {ring2?.id}
-                        </div> : null }
-                    </div> : null}
+                        </div>}
+                    </div>}
                      <div className={styles.textfield}>
-                        {weaponA1 !==undefined ? <div className={styles.textfield}>
+                        {weaponA1 &&  <div className={styles.textfield}>
                             {weaponA1?.slot} {weaponA1?.id}
-                        </div> : null}
-                        {weaponA2 !==undefined ? <div className={styles.textfield}>
+                        </div> }
+                        {weaponA2 &&  <div className={styles.textfield}>
                             {weaponA2?.slot} {weaponA2?.id}
-                        </div> : null}
+                        </div>}
 
-                        {weaponB1 !==undefined ? <div className={styles.textfield}>
+                        {weaponB1 &&  <div className={styles.textfield}>
                             {weaponB1?.slot} {weaponB1?.id}
-                        </div> : null}
+                        </div>}
 
-                        {weaponB2 !==undefined ? <div className={styles.textfield}>
+                        {weaponB2 &&  <div className={styles.textfield}>
                             {weaponB2?.slot} {weaponB2?.id}
-                        </div> : null}
+                        </div>}
                     </div>
-                    {helmAquatic && weaponAquaticA && weaponAquaticB !== undefined ? <div className={styles.textfield}>
-                        {helmAquatic !== undefined ? <div className={styles.textfield}>
+                    {helmAquatic && weaponAquaticA && weaponAquaticB && <div className={styles.textfield}>
+                        {helmAquatic  &&  <div className={styles.textfield}>
                             {helmAquatic?.slot} {helmAquatic?.id}
-                        </div> : null}
-                        {weaponAquaticA !== undefined ? <div className={styles.textfield}>
+                        </div>}
+                        {weaponAquaticA  &&  <div className={styles.textfield}>
                             {weaponAquaticA?.slot} {weaponAquaticA?.id}
-                        </div> : null}
-                        {weaponAquaticB !== undefined ? <div className={styles.textfield}>
+                        </div>}
+                        {weaponAquaticB &&  <div className={styles.textfield}>
                             {weaponAquaticB?.slot} {weaponAquaticB?.id}
-                        </div> : null}
-                    </div> : null}
-                    {sickle && axe && pick !== undefined ? <div className={styles.textfield}>
-                        {sickle !==undefined ? <div className={styles.textfield}>
+                        </div>}
+                    </div>}
+                    {sickle && axe && pick && <div className={styles.textfield}>
+                        {sickle && <div className={styles.textfield}>
                             {sickle?.slot} {sickle?.id}
-                        </div>: null}
-                        {axe !== undefined ? <div className={styles.textfield}>
+                        </div>}
+                        {axe && <div className={styles.textfield}>
                             {axe?.slot} {axe?.id}
-                        </div>: null}
-                        {pick !== undefined ? <div className={styles.textfield}>
+                        </div>}
+                        {pick && <div className={styles.textfield}>
                             {pick?.slot} {pick?.id}
-                        </div> : null}
-                    </div> : null}
+                        </div>}
+                    </div>}
                     </div>
             </Grid>
         </div>

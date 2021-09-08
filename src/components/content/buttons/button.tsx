@@ -18,9 +18,9 @@ export const Button = (props: ButtonPropsType) => {
     return (
         <div className={styles.button_style_container}>
             <NavLink to={props.buttonUrl} className={highlight[props.buttonStyle]}>
-                <span className={styles.button_style_nav_span}>
+                <button className={styles.button_style_nav_span}>
                          {props.buttonName}
-                </span>
+                </button>
             </NavLink>
 
             {/*<NavLink className={styles.button_creative_nav} to={'/login'}>*/}
