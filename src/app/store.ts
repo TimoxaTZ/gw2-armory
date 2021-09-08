@@ -3,11 +3,13 @@ import thunkMiddleware from "redux-thunk";
 import {configureStore} from "@reduxjs/toolkit";
 import {charactersReducer} from "../features/Characters/characters-reducer";
 import {authReducer} from "../features/Login/auth-reducer";
+import {characterReducer} from "../features/Characters/Character/character-reducer";
 
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    characters: charactersReducer
+    characters: charactersReducer,
+    character: characterReducer
 })
 
 export type AppRootStateType = ReturnType<RootReducerType>

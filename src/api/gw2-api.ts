@@ -43,10 +43,19 @@ export type ResponseType<D = {}> = {
 //GW2 Api
 
 
+
 export const armoryApi = {
     async getCharacters(apiKey: string) {
         return await instance.get<CharacterType[]>('v2/characters?ids=all&access_token='+apiKey)
+    },
+    async getCharacter(params:GetCharacterType) {
+        return await instance.get<CharacterType>(`v2/characters/${params.characterName}?access_token=${params.apiKey}`)
     }
+}
+
+export type GetCharacterType = {
+    apiKey: string,
+    characterName: string
 }
 
 export type CharacterType = {
