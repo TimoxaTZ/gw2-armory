@@ -18,13 +18,13 @@ export const Main = () => {
 
     const dispatch = useDispatch();
 
-
-
     useEffect(() => {
         dispatch(getCharactersTC("D49F610A-5D10-0D4C-986A-B7469B305227A200CF65-E569-44AD-8403-2DF8D5C960D1"));
     }, [dispatch])
 
     const characters = useAppSelector(state => state.characters.characters)
+    const charactersForProps = useAppSelector(state => state.characters)
+    console.log('CHARACTERS: '+characters)
 
     return (
         <div className={styles.header}>
@@ -35,7 +35,7 @@ export const Main = () => {
                 <Container className={styles.style} >
                     <Route exact path={'/'} render={() => <Content/>}/>
                     <Route exact path={'/login'} render={() => <Login/>}/>
-                    <Route exact path={'/characters'} render={() => <Characters/>}/>
+                    <Route exact path={'/characters'} render={() => <Characters characters={characters}/>}/>
 
                     {characters.map(c => {
                         return <Route exact path={`/characters/${c.name}`} render={() => <Character name={c.name}/>}/>
