@@ -1,3 +1,11 @@
+body {
+    background-color: rgba(0, 0, 0, 0.85);
+    /*background: url("./../assets/images/header.png") right 0px top 0px no-repeat;*/
+    /*, url("./../assets/images/header-left.png" ) left 0px top -125px no-repeat;*/
+    /*background-size: 65%;*/
+    background-size: contain;
+
+}
 
 .style {
     display: flex;
@@ -18,15 +26,17 @@
 
 .style:before{
     content: ' ';
-    display: block;
-    position: absolute;
+    display: flex;
+    /*display: block;*/
+    position:absolute;
     left: 0;
-    top: 0;
+    top: 10%;
     width: 100%;
     height: 100%;
     z-index: 1;
     opacity: 0.9;
-    background: url("./../assets/images/background.png") center no-repeat;
+    /*background: url("./../assets/images/background.jpg") center no-repeat;*/
+    background: url("./../assets/images/background.jpg") local;
     background-size: cover;
 }
 
