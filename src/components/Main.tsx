@@ -23,7 +23,6 @@ export const Main = () => {
     }, [dispatch])
 
     const characters = useAppSelector(state => state.characters.characters)
-    const charactersForProps = useAppSelector(state => state.characters)
     console.log('CHARACTERS: '+characters)
 
     return (

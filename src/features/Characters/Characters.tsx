@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux";
 import styles from './characters.module.css'
 import {getCharactersTC} from "./characters-reducer";
 import {useAppSelector} from "../../app/useAppSelector";
-import {NavLink, Route} from "react-router-dom";
+import {NavLink, Redirect, Route} from "react-router-dom";
 import { Character } from './Character/Character';
 import { Login } from '../Login/Login';
 import {CharacterType} from "../../api/gw2-api";
@@ -22,6 +22,7 @@ export const Characters = (props: any) => {
     // }, [dispatch])
 
     // @ts-ignore
+
     return (
         <div className={styles.intro}>
 
@@ -35,11 +36,11 @@ export const Characters = (props: any) => {
                                 <div className={styles.textfield}>
                                     <NavLink className={styles.nav} to={`/characters/${c.name}`}>
                                         <span>
-                                             {c.name}
+                                            {c.name}
                                         </span>
                                     </NavLink>
 
-                                    {/*<Route exact path={`/characters/${c.name}`} render={() => <Character name={c.name}/>}/>*/}
+                                    <Route exact path={`/characters/${c.name}`} render={() => <Character name={c.name}/>}/>
 
                                 </div>)}
                 </Grid>
