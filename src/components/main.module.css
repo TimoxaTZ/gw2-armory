@@ -11,7 +11,7 @@
     position: relative;
     top: 100%;
     background-color: rgba(0, 0, 0, 0.75);
-    position: relative;
+    /*position: relative;*/
     z-index: 1;
     overflow:hidden;
 
@@ -24,6 +24,7 @@
     top: 0;
     content: url("./../assets/images/background.jpg");
     opacity:0.5;
+
 
     /*background-image: url("./../assets/images/background.jpg");*/
     /*background-size: cover;*/
