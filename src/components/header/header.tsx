@@ -6,7 +6,6 @@ import logo from './../../assets/images/logo.jpg'
 
 export const Header = () => {
 
-
     return (
         <header className={styles.header}>
             <div className={styles.container}>

@@ -10,17 +10,14 @@ import {Container} from "@material-ui/core";
 export const Content = () => {
     return (
         <div className={styles.style}>
-            <ContentTitle/>
-            <ContentFilling/>
+                <ContentTitle/>
+                <ContentFilling/>
 
-            <div className={styles.buttons}>
-                <Button buttonUrl={'/characters'} buttonName='Characters' buttonStyle={2}/>
-                <Button buttonUrl={'/login'} buttonName='Change API token'buttonStyle={1}/>
+                <div className={styles.buttons}>
+                    <Button buttonUrl={'/characters'} buttonName='Characters' buttonStyle={2}/>
+                    <Button buttonUrl={'/login'} buttonName='Change API token'buttonStyle={1}/>
+                </div>
             </div>
-
-
-
-        </div>
     )
 }
 

@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {useDispatch} from "react-redux";
 import {useAppSelector} from "../../../app/useAppSelector";
 import {CharacterType} from "../../../api/gw2-api";
+import {inspect} from "util";
+import styles from './character.module.css'
 
 
 export const Character = (props:CharacterType) => {
@@ -13,7 +15,7 @@ export const Character = (props:CharacterType) => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className={styles.inner}>
             <h1>
                 {props.name}
             </h1>

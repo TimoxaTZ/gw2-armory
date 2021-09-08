@@ -1,0 +1,9 @@
+.inner {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 11000;
+    color: red;
+
+}

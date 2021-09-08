@@ -1,10 +1,38 @@
-body {
+.header {
     background-color: rgba(0, 0, 0, 0.85);
-    /*background: url("./../assets/images/header.png") right 0px top 0px no-repeat;*/
-    /*, url("./../assets/images/header-left.png" ) left 0px top -125px no-repeat;*/
-    /*background-size: 65%;*/
-    background-size: contain;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    z-index: 0;
+}
 
+.background {
+    position: relative;
+    top: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    position: relative;
+    z-index: 1;
+    overflow:hidden;
+
+}
+
+.background:before {
+    z-index: -1;
+    position:absolute;
+    left: 0;
+    top: 0;
+    content: url("./../assets/images/background.jpg");
+    opacity:0.5;
+
+    /*background-image: url("./../assets/images/background.jpg");*/
+    /*background-size: cover;*/
+    /*display: flex;*/
+    /*position: absolute;*/
+    /*top: 9%;*/
+    /*width: 1920px;*/
+    /*height: 1080px;*/
+    /*content:"";*/
 }
 
 .style {
@@ -18,25 +46,8 @@ body {
     color: #333;
     width: 100%;
     height: 110vh;
-
-}
-.style div {
-    z-index: 2;
+    z-index: -1000;
 }
 
-.style:before{
-    content: ' ';
-    display: flex;
-    /*display: block;*/
-    position:absolute;
-    left: 0;
-    top: 10%;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.9;
-    /*background: url("./../assets/images/background.jpg") center no-repeat;*/
-    background: url("./../assets/images/background.jpg") local;
-    background-size: cover;
-}
+
 
