@@ -1,9 +1,38 @@
 .inner {
     width: 100%;
-    max-width: 880px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*max-width: 880px;*/
+    /*margin: 0 auto;*/
     text-align: center;
     z-index: 11000;
-    color: red;
-
+    color: #000000;
 }
+
+.inner h1 {
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: "Proza Regular";
+    color: rgb(0, 0, 0);
+
+    padding: 5px;
+    border: 5px solid rgba(0, 0, 0, 0.58);
+    background-color: rgba(126, 246, 82, 0.23);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.27);
+
+    min-width: 200px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.inner h2 {
+    margin-top: -15px;
+}
+
+

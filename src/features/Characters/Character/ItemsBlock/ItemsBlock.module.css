@@ -1,0 +1,56 @@
+.intro {
+    display: flex;
+    /*padding-top: 15%;*/
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.textfield {
+    font-size: 25px;
+    font-weight: 400;
+    font-family: "Proza Regular";
+    color: rgb(0, 0, 0);
+
+    padding: 5px;
+    border: 5px solid rgba(0, 0, 0, 0.58);
+    background-color: rgba(255, 255, 255, 0.23);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.27);
+
+    min-width: 200px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.nav {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.68);
+}
+
+.nav:hover {
+    color: rgba(255, 218, 162, 0.82);
+}
+
+
+.textfield:after {
+    /*плавное отображение при отрисовке*/
+    transition: opacity 0.2s linear;
+}
+.textfield:hover {
+    color: rgba(255, 218, 162, 0.82);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.68);
+    border: 5px solid rgba(255, 218, 162, 0.82);
+    /*border-color: black;*/
+    transition: color 0.3s linear, background-color 0.3s , border 0.3s linear ;
+}
+/*показать полоску после наведения*/
+.textfield:hover:after {
+    opacity: 1;
+}
