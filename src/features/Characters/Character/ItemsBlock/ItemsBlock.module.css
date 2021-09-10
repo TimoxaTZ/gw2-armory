@@ -1,6 +1,6 @@
 .intro {
     display: flex;
-    /*padding-top: 15%;*/
+    padding-top: 3%;
     flex-direction: column;
     justify-content: center;
 }
