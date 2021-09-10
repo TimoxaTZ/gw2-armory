@@ -5,7 +5,8 @@ import {CharacterType} from "../../../api/gw2-api";
 import styles from './character.module.css'
 import buttonStyles from './../../../components/content/buttons/button.module.css'
 import {Button} from '../../../components/content/buttons/button';
-import {ItemsBlock} from "./ItemsBlock/ItemsBlock";
+import {ItemsBlock} from "./Equipment/ItemsBlock/ItemsBlock";
+import {ItemsData} from "./Equipment/ItemsData";
 
 export const Character = (props:CharacterType) => {
 
@@ -20,7 +21,8 @@ const dispatch = useDispatch();
                     {characterName}
                 </h1>
                 <h2 >
-                    <ItemsBlock name={props.name}/>
+                    {/*<ItemsBlock name={props.name}/>*/}
+                    <ItemsData name={props.name}/>
                 </h2>
             </div>
             <div className={buttonStyles.buttons}>
