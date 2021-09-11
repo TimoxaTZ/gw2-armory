@@ -10,6 +10,7 @@ import {useAppSelector} from "../app/useAppSelector";
 import {Character} from "../features/Characters/Character/Character";
 import {useDispatch} from "react-redux";
 import {getCharactersTC} from "../features/Characters/characters-reducer";
+import {getItemTC} from "../features/Characters/Character/Equipment/ItemsBlock/items-reducer";
 
 
 
@@ -21,6 +22,7 @@ export const Main = () => {
     useEffect(() => {
         dispatch(getCharactersTC("D49F610A-5D10-0D4C-986A-B7469B305227A200CF65-E569-44AD-8403-2DF8D5C960D1"));
     }, [dispatch])
+
 
     const characters = useAppSelector(state => state.characters.characters)
     console.log('CHARACTERS: '+characters)

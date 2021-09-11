@@ -50,12 +50,19 @@ export const armoryApi = {
     },
     async getCharacter(params:GetCharacterType) {
         return await instance.get<CharacterType>(`v2/characters/${params.characterName}?access_token=${params.apiKey}`)
+    },
+    async getItem(params:number) {
+        return await instance.get<ItemType>(`v2/items/${params}`)
     }
 }
 
 export type GetCharacterType = {
     apiKey: string,
     characterName: string
+}
+
+export type GetItemType = {
+    itemId: number
 }
 
 export type CharacterType = {
@@ -89,6 +96,22 @@ export type CharacterType = {
     // "specializations"?: {},
     // "skills"?: {}
 };
+
+export type ItemType = {
+    name: string,
+    typ: string,
+    level: number,
+    rarity: string,
+    vendor_value: number,
+    default_skin: number,
+    game_types: [],
+    flags: [],
+    restrictions: [],
+    id: number,
+    chat_link: string,
+    icon: string
+    details: {}
+}
 
 // export type CharactersResponseType = {
 //     data:CharacterType []

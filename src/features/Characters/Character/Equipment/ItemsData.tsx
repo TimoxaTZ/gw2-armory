@@ -1,7 +1,11 @@
 import {CharacterType} from "../../../../api/gw2-api";
 import {useAppSelector} from "../../../../app/useAppSelector";
-import React from "react";
+import React, {useEffect} from "react";
 import {ItemsBlock} from "./ItemsBlock/ItemsBlock";
+import {getItemTC} from "./ItemsBlock/items-reducer";
+import {useDispatch} from "react-redux";
+import styles from "./ItemsBlock/ItemsBlock.module.css";
+import {Grid} from "@material-ui/core";
 
 export const ItemsData = (props: CharacterType) => {
     const data: CharacterType[] = useAppSelector(state => state.characters.characters)
@@ -15,7 +19,6 @@ export const ItemsData = (props: CharacterType) => {
 
     const character: any = characters[props.name]
     const equipment: EquipmentType[] = character['equipment']
-
     const items: ItemsType = equipment.reduce((acc, item) => {
         return {
             ...acc, [item.slot]: {
@@ -23,6 +26,25 @@ export const ItemsData = (props: CharacterType) => {
             }
         };
     }, {});
+
+    let itemId: number;
+    equipment.map((item: any) => {
+        if (items.hasOwnProperty(item.slot))
+            return itemId = items[item.slot].id
+
+    })
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+
+        dispatch(getItemTC(itemId))
+    }, [dispatch])
+
+
+
+    const item = useAppSelector(state => state.item.item)
+    console.log(item);
+
 
     return <ItemsBlock equipment={equipment}
                        items={items}/>

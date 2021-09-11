@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./ItemsBlock.module.css"
 import {Grid} from "@material-ui/core";
 import {EquipmentType, ItemsType} from "../ItemsData";
+import {armoryApi} from "../../../../../api/gw2-api";
+import {getCharactersTC} from "../../../characters-reducer";
+import {getItemTC} from "./items-reducer";
+import {useAppSelector} from "../../../../../app/useAppSelector";
 
 export const ItemsBlock = (props: {equipment: EquipmentType[], items: ItemsType}) => {
 

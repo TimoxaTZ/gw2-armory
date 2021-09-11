@@ -4,12 +4,14 @@ import {configureStore} from "@reduxjs/toolkit";
 import {charactersReducer} from "../features/Characters/characters-reducer";
 import {authReducer} from "../features/Login/auth-reducer";
 import {characterReducer} from "../features/Characters/Character/character-reducer";
+import {itemsReducer} from "../features/Characters/Character/Equipment/ItemsBlock/items-reducer";
 
 
 const rootReducer = combineReducers({
     auth: authReducer,
     characters: charactersReducer,
-    character: characterReducer
+    character: characterReducer,
+    item: itemsReducer
 })
 
 export type AppRootStateType = ReturnType<RootReducerType>
