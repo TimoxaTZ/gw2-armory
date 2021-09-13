@@ -7,15 +7,8 @@ import {useAppSelector} from "../../../../../app/useAppSelector";
 import {useDispatch} from "react-redux";
 import {ItemType} from "../../../../../api/gw2-api";
 
-export const ItemsBlock = (props: {equipment: EquipmentType[]}) => {
 
-    // const dispatch = useDispatch();
-    //
-    // props.equipment.forEach(item => {
-    //     dispatch(getItemTC(item.id))
-    //     // console.log(item.slot +': '+item.id)
-    // })
-    // // console.log(props.equipment)
+export const ItemsBlock = (props: {equipment: EquipmentType[]}) => {
 
     return (
         <div className={styles.intro}>
@@ -36,7 +29,6 @@ export const ItemsBlock = (props: {equipment: EquipmentType[]}) => {
 
             </Grid>
         </div>
-
     )
 }
 
@@ -47,16 +39,17 @@ export const Item = (props: {itemId:number}) => {
         dispatch(getItemTC(props.itemId))
     }, [dispatch])
 
-    let currentItem = {name: 'Loading...'};
-
     const items:ItemsType = useAppSelector(state => state.item)
-    if (items[props.itemId]) {
-        currentItem = items[props.itemId]
+    const currentItem = items[props.itemId]
+
+    if (currentItem && currentItem.status === 'succeed') {
+            return <div> {currentItem.name} </div>
     }
 
     return <div>
-        {currentItem.name}
+        Loading...
     </div>
+
 }
 
 // type ItemType1 = {

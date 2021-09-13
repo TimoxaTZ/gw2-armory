@@ -8,6 +8,8 @@ export const getItemTC = createAsyncThunk<ItemType, number, ErrorType>('item-get
     const res = await armoryApi.getItem(params)
     return res.data
 
+
+
     // WORKS FINE. TESTED.
 })
 
@@ -15,7 +17,7 @@ export const getItemTC = createAsyncThunk<ItemType, number, ErrorType>('item-get
 // const initialState = {item: {} as ItemType}
 
 const initialState:ItemsType = {
-    [0]: {} as ItemType
+    [0]: {status: "loading"} as ItemType
 }
 
 const slice = createSlice({
@@ -25,13 +27,7 @@ const slice = createSlice({
     extraReducers: builder => {builder
         .addCase(getItemTC.fulfilled, (state, action) => {
             state[action.payload.id] = action.payload;
-            // console.log(state[action.payload.id])
-            // console.log(action.payload.id)
-            // state[action.payload.id] = action.payload;
-
-            // console.log(state.item)
-
-
+            state[action.payload.id].status = 'succeed'
         })}
 })
 
@@ -47,3 +43,6 @@ export type ErrorType = {
 export type ItemsType = {
     [id:number]: ItemType
 }
+
+
+export type StatusType = 'loading' | 'succeed' | 'failed'
