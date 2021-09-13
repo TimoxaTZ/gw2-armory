@@ -1,11 +1,12 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./ItemsBlock.module.css"
 import {Grid} from "@material-ui/core";
-import {EquipmentType} from "../ItemsData";
+import {CharactersReducedType, EquipmentType} from "../ItemsData";
 import {getItemTC, ItemsType} from "./items-reducer";
 import {useAppSelector} from "../../../../../app/useAppSelector";
 import {useDispatch} from "react-redux";
 import {ItemRender} from "./ItemRender/ItemRender";
+
 
 
 export const ItemToRender = (props: { equipment: EquipmentType[] }) => {
@@ -42,11 +43,32 @@ export const Item = (props: { itemId: number, stats: StatsType }) => {
     const items: ItemsType = useAppSelector(state => state.item)
     const currentItem = items[props.itemId]
 
-
     if (currentItem && currentItem.status === 'succeed') {
 
         let itemsTypeTooltip = currentItem.details.type ? currentItem.details.type : currentItem.type
         let defenseTooltip = currentItem.type === 'Armor' ? 'Defense: ' + currentItem.details.defense : null;
+        let stats = currentItem.stats?.attributes;
+        //  данные для типа шмота (марадер, валькирия и тд)
+        // let stats = currentItem.stats?.id;
+        // if (stats) {
+        //     console.log(currentItem.name + " " + stats)
+        // }
+        // данные для типа шмота (марадер, валькирия и тд)
+
+        //  данные для статов шмота
+
+        // if (stats) {
+        //     console.log(currentItem.name + " " + stats)
+        // }
+
+        // if (stats) {
+        //     for (const [key, value] of Object.entries(stats)) {
+        //         console.log(currentItem.name + " stats: " + `${key}: ${value}`);
+        //         // let statsOfItem = `${key}: ${value}`;
+        //
+        //     }
+        // }
+        // данные для статов шмота
 
         // if (currentItem.stats?.attributes) {
         //     for (const [key, value] of Object.entries(currentItem.stats?.attributes)) {
@@ -77,7 +99,8 @@ export const Item = (props: { itemId: number, stats: StatsType }) => {
                            defenseTooltip={defenseTooltip}
                            itemTypeTooltip={itemsTypeTooltip}
                            itemRarity={currentItem.rarity}
-                           itemWeightClass={currentItem.details.weight_class}/>
+                           itemWeightClass={currentItem.details.weight_class}
+                           itemStats={stats}/>
 
     }
     return <div>
@@ -89,16 +112,16 @@ export const Item = (props: { itemId: number, stats: StatsType }) => {
 export type StatsType = {
     id: number,
     attributes: {
-        Power?: number,
-        Precision?: number,
-        CritDamage?: number,
-        AgonyResistance?: number,
-        BoonDuration?: number,
-        ConditionDamage?: number,
-        ConditionDuration?: number,
-        Healing?: number,
-        Toughness?: number,
-        Vitality?: number,
+        // Power?: number,
+        // Precision?: number,
+        // CritDamage?: number,
+        // AgonyResistance?: number,
+        // BoonDuration?: number,
+        // ConditionDamage?: number,
+        // ConditionDuration?: number,
+        // Healing?: number,
+        // Toughness?: number,
+        // Vitality?: number,
     }
 }
 

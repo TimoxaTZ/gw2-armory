@@ -1,6 +1,15 @@
 import React from "react";
+import {StatsType} from "../ItemToRender";
 
 export const ItemRender = (props: ItemRenderPropsType) => {
+
+    if (props.itemStats) {
+        for (const [key, value] of Object.entries(props.itemStats)) {
+            console.log(props.itemName + " stats: " + `${key}: ${value}`);
+            // let statsOfItem = `${key}: ${value}`;
+
+        }
+    }
 
     return <div style={{
         display: "flex",
@@ -24,7 +33,7 @@ export const ItemRender = (props: ItemRenderPropsType) => {
                 {props.defenseTooltip}
             </div>
             <div>
-                {/*{statsOfItem}*/}
+                {/*{stats}*/}
             </div>
         </div>
 
@@ -54,5 +63,19 @@ export type ItemRenderPropsType = {
     itemTypeTooltip: string,
     itemRarity: string,
     itemWeightClass: string,
+    itemStats: AttributesType | undefined
     // itemId: number,
+}
+
+export type AttributesType = {
+    Power?: number,
+    Precision?: number,
+    CritDamage?: number,
+    AgonyResistance?: number,
+    BoonDuration?: number,
+    ConditionDamage?: number,
+    ConditionDuration?: number,
+    Healing?: number,
+    Toughness?: number,
+    Vitality?: number,
 }
