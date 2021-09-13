@@ -2,6 +2,7 @@ import axios from "axios";
 import {instance} from "./instance";
 import {StatusType} from "../features/Characters/Character/Equipment/ItemsBlock/items-reducer";
 import {rejects, throws} from "assert";
+import {StatsType} from "../features/Characters/Character/Equipment/ItemsBlock/ItemsBlock";
 
 const authInstance = axios.create({
     baseURL: "https://social-network.samuraijs.com/api/1.1/",
@@ -53,7 +54,7 @@ export const armoryApi = {
     async getCharacter(params:GetCharacterType) {
         return await instance.get<CharacterType>(`v2/characters/${params.characterName}?access_token=${params.apiKey}`)
     },
-    async getItem(params:number) {
+    async getItem(params: number, stats?: StatsType) {
            return await instance.get<ItemType>(`v2/items/${params}`)
     }
 }
@@ -120,7 +121,7 @@ export type ItemType = {
             }
         ],
         type: string,
-
+        defense: number,
         weight_class: "Medium" | "Heavy" | 'Light',
         attribute_adjustment: number,
         stat_choices: [],
@@ -128,7 +129,7 @@ export type ItemType = {
     },
 
 
-
+    stats?: StatsType
     status?: StatusType
     text?: 'no such id'
 }
