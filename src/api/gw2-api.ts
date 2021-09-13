@@ -119,10 +119,15 @@ export type ItemType = {
                 flags: [string]
             }
         ],
+        type: string,
+
+        weight_class: "Medium" | "Heavy" | 'Light',
         attribute_adjustment: number,
         stat_choices: [],
         secondary_suffix_item_id: string
     },
+
+
 
     status?: StatusType
     text?: 'no such id'

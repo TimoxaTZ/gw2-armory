@@ -34,6 +34,7 @@ export type EquipmentType = {
     id: number,
     slot: string,
     upgrades: [],
+    infusions?: [],
     skin: number,
     binding: string,
     bound_to: string

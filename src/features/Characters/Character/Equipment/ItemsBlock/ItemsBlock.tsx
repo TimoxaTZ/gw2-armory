@@ -43,6 +43,9 @@ export const Item = (props: {itemId:number}) => {
     const currentItem = items[props.itemId]
 
     if (currentItem && currentItem.status === 'succeed') {
+
+            let itemsTypeTooltip =  currentItem.details.type ?  currentItem.details.type :  currentItem.type
+
             return <div style={{display: "flex", flexDirection: "row", alignItems: "start", justifyContent: "space-around", fontSize: 15}}>
 
                 <div style={{marginRight: 10}}>
@@ -59,7 +62,7 @@ export const Item = (props: {itemId:number}) => {
 
                 <div>
                     <div >
-
+                        {/*{currentItem.}*/}
                     </div>
                 </div>
 
@@ -67,9 +70,13 @@ export const Item = (props: {itemId:number}) => {
                     <div >
                         {currentItem.rarity}
                     </div>
-                    <div>
-                        {currentItem.type}
+                    <div >
+                        {currentItem.details.weight_class}
                     </div>
+                    <div>
+                        {itemsTypeTooltip}
+                    </div>
+
                 </div>
 
             </div>
