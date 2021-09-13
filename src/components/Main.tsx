@@ -25,7 +25,7 @@ export const Main = () => {
 
 
     const characters = useAppSelector(state => state.characters.characters)
-    console.log('CHARACTERS: '+characters)
+    // console.log('CHARACTERS: '+characters)
 
     return (
         <div className={styles.header}>

@@ -7,12 +7,16 @@ import {GetItemType, ItemType} from "../../../../../api/gw2-api";
 export const getItemTC = createAsyncThunk<ItemType, number, ErrorType>('item-get', async (params)=> {
     const res = await armoryApi.getItem(params)
     return res.data
+
     // WORKS FINE. TESTED.
 })
 
 
-const initialState = {item: {} as ItemType}
-// const initialState = {characters: [] as CharacterType[]}
+// const initialState = {item: {} as ItemType}
+
+const initialState:ItemsType = {
+    [0]: {} as ItemType
+}
 
 const slice = createSlice({
     name: 'item',
@@ -20,7 +24,14 @@ const slice = createSlice({
     reducers: {},
     extraReducers: builder => {builder
         .addCase(getItemTC.fulfilled, (state, action) => {
-            state.item = action.payload
+            state[action.payload.id] = action.payload;
+            // console.log(state[action.payload.id])
+            // console.log(action.payload.id)
+            // state[action.payload.id] = action.payload;
+
+            // console.log(state.item)
+
+
         })}
 })
 
@@ -31,4 +42,8 @@ export type ErrorType = {
         error?: string,
         text?: string
     }
+}
+
+export type ItemsType = {
+    [id:number]: ItemType
 }

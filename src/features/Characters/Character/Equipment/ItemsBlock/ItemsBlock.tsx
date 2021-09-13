@@ -1,18 +1,21 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import styles from "./ItemsBlock.module.css"
 import {Grid} from "@material-ui/core";
 import {EquipmentType} from "../ItemsData";
-import {getItemTC} from "./items-reducer";
+import {getItemTC, ItemsType} from "./items-reducer";
 import {useAppSelector} from "../../../../../app/useAppSelector";
 import {useDispatch} from "react-redux";
+import {ItemType} from "../../../../../api/gw2-api";
 
 export const ItemsBlock = (props: {equipment: EquipmentType[]}) => {
 
+    // const dispatch = useDispatch();
+    //
     // props.equipment.forEach(item => {
-    //     // dispatch(getItemTC(item.id))
-    //     console.log(item.slot +': '+item.id)
+    //     dispatch(getItemTC(item.id))
+    //     // console.log(item.slot +': '+item.id)
     // })
-    // console.log(props.equipment)
+    // // console.log(props.equipment)
 
     return (
         <div className={styles.intro}>
@@ -25,8 +28,8 @@ export const ItemsBlock = (props: {equipment: EquipmentType[]}) => {
                 {props.equipment.map((item: any) => {
                         return (
                             <div className={styles.textfield}>
-                                {`${item.slot}: ${item.id}`}
-                                {/*<Item itemId={item.id}/>*/}
+                                {/*{`${item.slot}: ${item.id}`}*/}
+                                <Item itemId={item.id}/>
                             </div>
                         )
                 })}
@@ -39,39 +42,38 @@ export const ItemsBlock = (props: {equipment: EquipmentType[]}) => {
 
 
 export const Item = (props: {itemId:number}) => {
-
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(getItemTC(props.itemId))
     }, [dispatch])
 
+    let currentItem = {name: 'Loading...'};
 
-    // useCallback(dispatch(getItemTC(props.itemId)), [dispatch])
-
-    const item:ItemType = useAppSelector(state => state.item.item)
-    // console.log(item.name);
+    const items:ItemsType = useAppSelector(state => state.item)
+    if (items[props.itemId]) {
+        currentItem = items[props.itemId]
+    }
 
     return <div>
-        {item.name}
+        {currentItem.name}
     </div>
 }
 
-type ItemType = {
-    name: string,
-    // slotType: string,
-    level: number,
-    rarity: string,
-    vendor_value: number,
-    default_skin: number,
-    game_types:  [],
-    flags:  [],
-    restrictions: [],
-    id: number,
-    chat_link: string,
-    icon: string,
-    details: {}
-}
+// type ItemType1 = {
+//     name: string,
+//     // slotType: string,
+//     level: number,
+//     rarity: string,
+//     vendor_value: number,
+//     default_skin: number,
+//     game_types:  [],
+//     flags:  [],
+//     restrictions: [],
+//     id: number,
+//     chat_link: string,
+//     icon: string,
+//     details: {}
+// }
 
 
 
