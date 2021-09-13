@@ -101,7 +101,7 @@ export type CharacterType = {
 
 export type ItemType = {
     name: string,
-    typ: string,
+    type: string,
     level: number,
     rarity: string,
     vendor_value: number,
@@ -112,7 +112,18 @@ export type ItemType = {
     id: number,
     chat_link: string,
     icon: string,
-    details: {},
+
+    details: {
+        infusion_slots: [
+            {
+                flags: [string]
+            }
+        ],
+        attribute_adjustment: number,
+        stat_choices: [],
+        secondary_suffix_item_id: string
+    },
+
     status?: StatusType
     text?: 'no such id'
 }

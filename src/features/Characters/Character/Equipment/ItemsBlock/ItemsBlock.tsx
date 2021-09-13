@@ -43,7 +43,36 @@ export const Item = (props: {itemId:number}) => {
     const currentItem = items[props.itemId]
 
     if (currentItem && currentItem.status === 'succeed') {
-            return <div> {currentItem.name} </div>
+            return <div style={{display: "flex", flexDirection: "row", alignItems: "start", justifyContent: "space-around", fontSize: 15}}>
+
+                <div style={{marginRight: 10}}>
+                    <div>
+                        <img src={currentItem.icon}></img>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        {currentItem.name}
+                    </div>
+                </div>
+
+                <div>
+                    <div >
+
+                    </div>
+                </div>
+
+                <div style={{marginLeft: 20}}>
+                    <div >
+                        {currentItem.rarity}
+                    </div>
+                    <div>
+                        {currentItem.type}
+                    </div>
+                </div>
+
+            </div>
     }
 
     return <div>
