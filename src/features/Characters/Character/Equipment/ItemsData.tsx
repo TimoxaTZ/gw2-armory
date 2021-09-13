@@ -1,7 +1,7 @@
 import {CharacterType} from "../../../../api/gw2-api";
 import {useAppSelector} from "../../../../app/useAppSelector";
 import React from "react";
-import {ItemsBlock} from "./ItemsBlock/ItemsBlock";
+import {ItemToRender} from "./ItemsToRender/ItemToRender";
 
 export const ItemsData = (props: CharacterType) => {
     const data: CharacterType[] = useAppSelector(state => state.characters.characters)
@@ -24,7 +24,7 @@ export const ItemsData = (props: CharacterType) => {
     //     };
     // }, {});
 
-    return <ItemsBlock equipment={equipment}/>
+    return <ItemToRender equipment={equipment}/>
 }
 
 export type CharactersReducedType = {

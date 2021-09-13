@@ -10,7 +10,7 @@ import {useAppSelector} from "../app/useAppSelector";
 import {Character} from "../features/Characters/Character/Character";
 import {useDispatch} from "react-redux";
 import {getCharactersTC} from "../features/Characters/characters-reducer";
-import {getItemTC} from "../features/Characters/Character/Equipment/ItemsBlock/items-reducer";
+import {getItemTC} from "../features/Characters/Character/Equipment/ItemsToRender/items-reducer";
 
 
 

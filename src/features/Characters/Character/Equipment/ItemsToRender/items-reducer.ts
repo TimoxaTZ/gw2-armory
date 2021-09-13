@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {armoryApi} from '../../../../../api/gw2-api';
 import {GetItemType, ItemType} from "../../../../../api/gw2-api";
-import {StatsType} from "./ItemsBlock";
+import {StatsType} from "./ItemToRender";
 import {useAppSelector} from "../../../../../app/useAppSelector";
 
 

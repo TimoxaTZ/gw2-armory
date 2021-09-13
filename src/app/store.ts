@@ -4,7 +4,7 @@ import {configureStore} from "@reduxjs/toolkit";
 import {charactersReducer} from "../features/Characters/characters-reducer";
 import {authReducer} from "../features/Login/auth-reducer";
 import {characterReducer} from "../features/Characters/Character/character-reducer";
-import {itemsReducer} from "../features/Characters/Character/Equipment/ItemsBlock/items-reducer";
+import {itemsReducer} from "../features/Characters/Character/Equipment/ItemsToRender/items-reducer";
 
 
 const rootReducer = combineReducers({

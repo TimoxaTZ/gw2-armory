@@ -1,8 +1,7 @@
 import axios from "axios";
 import {instance} from "./instance";
-import {StatusType} from "../features/Characters/Character/Equipment/ItemsBlock/items-reducer";
-import {rejects, throws} from "assert";
-import {StatsType} from "../features/Characters/Character/Equipment/ItemsBlock/ItemsBlock";
+import {StatusType} from "../features/Characters/Character/Equipment/ItemsToRender/items-reducer";
+import {StatsType} from "../features/Characters/Character/Equipment/ItemsToRender/ItemToRender";
 
 const authInstance = axios.create({
     baseURL: "https://social-network.samuraijs.com/api/1.1/",
