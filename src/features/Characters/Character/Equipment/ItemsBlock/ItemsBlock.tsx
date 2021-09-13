@@ -48,24 +48,23 @@ export const Item = (props: { itemId: number, stats: StatsType }) => {
 
         let itemsTypeTooltip = currentItem.details.type ? currentItem.details.type : currentItem.type
         let defenseTooltip = currentItem.type === 'Armor' ? 'Defense: ' + currentItem.details.defense : null;
+
         let stats = currentItem.stats?.attributes;
-        // console.log(stats)
 
-
-
-        if (stats) {
-            for (var key in stats) {
-                // console.log(key + ": " + stats[key]);
+            if (stats) {
+                let keys = Object.keys(stats)
+                let values = Object.values(stats)
+                {keys.map(k => {
+                    // values.map(v => console.log (k + ": " + v))
+                    values.map(v => {
+                        return (
+                            <div>
+                                {k}: {v}
+                            </div>
+                        )
+                    })
+                })}
             }
-
-
-            // let keys = Object.keys(stats)
-            // let values = Object.values(stats)
-            // // keys.forEach(k => console.log(k))
-            // keys.map(k => console.log(k + ": )))
-        }
-
-
 
         return <div style={{
             display: "flex",
