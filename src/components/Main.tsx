@@ -24,8 +24,9 @@ export const Main = () => {
     }, [dispatch])
 
 
-    const characters = useAppSelector(state => state.characters.characters)
+    // const characters = useAppSelector(state => state.characters.characters)
     // console.log('CHARACTERS: '+characters)
+    // const urls = Object.keys(characters)
 
     return (
         <div className={styles.header}>
@@ -36,11 +37,11 @@ export const Main = () => {
                 <Container className={styles.style} >
                     <Route exact path={'/'} render={() => <Content/>}/>
                     <Route exact path={'/login'} render={() => <Login/>}/>
-                    <Route exact path={'/characters'} render={() => <Characters characters={characters}/>}/>
+                    {/*<Route exact path={'/characters'} render={() => <Characters characters={urls}/>}/>*/}
 
-                    {characters.map(c => {
-                        return <Route exact path={`/characters/${c.name}`} render={() => <Character name={c.name}/>}/>
-                    })}
+                    {/*{urls.map(c => {*/}
+                    {/*    return <Route exact path={`/characters/:id`} render={() => <Character/>}/>*/}
+                    {/*})}*/}
 
                     {/*<Navbar/>*/}
                     {/*<Footer/>*/}

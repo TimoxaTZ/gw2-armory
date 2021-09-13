@@ -4,27 +4,13 @@ import React from "react";
 import {ItemToRender} from "./ItemsToRender/ItemToRender";
 
 export const ItemsData = (props: CharacterType) => {
-    const data: CharacterType[] = useAppSelector(state => state.characters.characters)
-    const characters: CharactersReducedType = data.reduce((acc, character) => {
-        return {
-            ...acc, [character.name]: {
-                ...character
-            }
-        };
-    }, {});
+    const data = useAppSelector(state => state.characters.characters)
 
-    const character: any = characters[props.name]
-    const equipment: EquipmentType[] = character['equipment']
 
-    // const items: ItemsType = equipment.reduce((acc, item) => {
-    //     return {
-    //         ...acc, [item.slot]: {
-    //             ...item
-    //         }
-    //     };
-    // }, {});
+    const character = data[props.name]
+    const equipment = character['equipment']
 
-    return <ItemToRender equipment={equipment}/>
+    return equipment? <ItemToRender equipment={equipment}/> : <div></div>
 }
 
 export type CharactersReducedType = {
@@ -39,7 +25,10 @@ export type EquipmentType = {
     skin: number,
     binding: string,
     bound_to: string
+    statsStorage?: any
 }
+
+
 // export type ItemsType = {
 //     [itemName: string]: {
 //         id: number,

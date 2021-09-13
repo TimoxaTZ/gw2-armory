@@ -3,13 +3,15 @@ import {StatsType} from "../ItemToRender";
 
 export const ItemRender = (props: ItemRenderPropsType) => {
 
-    if (props.itemStats) {
-        for (const [key, value] of Object.entries(props.itemStats)) {
-            console.log(props.itemName + " stats: " + `${key}: ${value}`);
-            // let statsOfItem = `${key}: ${value}`;
-
-        }
-    }
+    // let stats;
+    // if (props.itemStats) {
+    //     for (const [key, value] of Object.entries(props.itemStats)) {
+    //         console.log(props.itemName + " stats: " + `${key}: ${value}`);
+    //         // let statsOfItem = `${key}: ${value}`;
+    //         // stats = props.itemName + " stats: " + `${key}: ${value}`
+    //
+    //     }
+    // }
 
     return <div style={{
         display: "flex",
@@ -33,6 +35,7 @@ export const ItemRender = (props: ItemRenderPropsType) => {
                 {props.defenseTooltip}
             </div>
             <div>
+                {props.statsOfItem}
                 {/*{stats}*/}
             </div>
         </div>
@@ -64,6 +67,7 @@ export type ItemRenderPropsType = {
     itemRarity: string,
     itemWeightClass: string,
     itemStats: AttributesType | undefined
+    statsOfItem?: string
     // itemId: number,
 }
 

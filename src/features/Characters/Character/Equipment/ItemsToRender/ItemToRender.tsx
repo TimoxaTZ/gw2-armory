@@ -43,7 +43,7 @@ export const Item = (props: { itemId: number, stats: StatsType }) => {
     const items: ItemsType = useAppSelector(state => state.item)
     const currentItem = items[props.itemId]
 
-    if (currentItem && currentItem.status === 'succeed') {
+    if (currentItem) {
 
         let itemsTypeTooltip = currentItem.details.type ? currentItem.details.type : currentItem.type
         let defenseTooltip = currentItem.type === 'Armor' ? 'Defense: ' + currentItem.details.defense : null;
@@ -60,14 +60,14 @@ export const Item = (props: { itemId: number, stats: StatsType }) => {
         // if (stats) {
         //     console.log(currentItem.name + " " + stats)
         // }
+        let statsOfItem;
+        if (stats) {
+            for (const [key, value] of Object.entries(stats)) {
+                console.log(currentItem.name + " stats: " + `${key}: ${value}`);
+                statsOfItem = `${key}: ${value}`;
 
-        // if (stats) {
-        //     for (const [key, value] of Object.entries(stats)) {
-        //         console.log(currentItem.name + " stats: " + `${key}: ${value}`);
-        //         // let statsOfItem = `${key}: ${value}`;
-        //
-        //     }
-        // }
+            }
+        }
         // данные для статов шмота
 
         // if (currentItem.stats?.attributes) {
@@ -100,7 +100,8 @@ export const Item = (props: { itemId: number, stats: StatsType }) => {
                            itemTypeTooltip={itemsTypeTooltip}
                            itemRarity={currentItem.rarity}
                            itemWeightClass={currentItem.details.weight_class}
-                           itemStats={stats}/>
+                           itemStats={stats}
+        statsOfItem={statsOfItem}/>
 
     }
     return <div>

@@ -15,8 +15,9 @@ export const getItemTC = createAsyncThunk<ItemType, {id: number, stats: StatsTyp
 
 // const initialState = {item: {} as ItemType}
 
-const initialState:ItemsType = {
-    [0]: {status: "loading", stats: {attributes: {}, id: 0}} as ItemType
+const initialState = {
+    status: 'idle' as StatusType,
+    items: {} as ItemsType
 }
 
 const slice = createSlice({
@@ -25,8 +26,8 @@ const slice = createSlice({
     reducers: {},
     extraReducers: builder => {builder
         .addCase(getItemTC.fulfilled, (state, action) => {
-            state[action.payload.id] = action.payload;
-            state[action.payload.id].status = 'succeed'
+            state.items[action.payload.id] = action.payload;
+            state.status = 'succeed'
         })
     }
 })

@@ -12,7 +12,7 @@ import {CharacterType} from "../../api/gw2-api";
 
 export const Characters = (props: any) => {
 
-
+    debugger
     // const dispatch = useDispatch();
     // // const characters = useSelector<AppRootStateType, Array<CharacterType>>(state => state.characters.characters)
     // const characters = useAppSelector(state => state.characters.characters)
@@ -40,7 +40,7 @@ export const Characters = (props: any) => {
                                         </span>
                                     </NavLink>
 
-                                    <Route exact path={`/characters/${c.name}`} render={() => <Character name={c.name}/>}/>
+                                    {/*<Route exact path={`/characters/${c.name}`} render={() => <Character name={c.name}/>}/>*/}
 
                                 </div>)}
                 </Grid>

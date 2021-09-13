@@ -2,6 +2,7 @@ import axios from "axios";
 import {instance} from "./instance";
 import {StatusType} from "../features/Characters/Character/Equipment/ItemsToRender/items-reducer";
 import {StatsType} from "../features/Characters/Character/Equipment/ItemsToRender/ItemToRender";
+import {EquipmentType} from "../features/Characters/Character/Equipment/ItemsData";
 
 const authInstance = axios.create({
     baseURL: "https://social-network.samuraijs.com/api/1.1/",
@@ -82,15 +83,8 @@ export type CharacterType = {
     // "title"?: 365,
     // "backstory"?: [],
     // "wvw_abilities"?: [],
-    "equipment"?: [
-        {
-            id: number,
-            slot: string,
-            upgrades: [],
-            skin: number,
-            binding: string,
-            bound_to: string
-        }],
+    "equipment"?:
+        EquipmentType[],
     // "recipes"?: [],
     // "training"?: [],
     // "bags"?: [],
@@ -129,7 +123,7 @@ export type ItemType = {
 
 
     stats?: StatsType
-    status?: StatusType
+    // status?: StatusType
     text?: 'no such id'
 }
 
