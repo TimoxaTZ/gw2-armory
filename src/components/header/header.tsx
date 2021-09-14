@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './header.module.css'
 import logo from './../../assets/images/logo.jpg'
+import {Login} from "../../features/Login/Login";
 
 
 
@@ -15,7 +16,7 @@ export const Header = () => {
                     </div>
                     <nav className={styles.nav}>
                         <a href='/' className={styles.nav_link}>About</a>
-                        <a href='/login' className={styles.nav_link}>Login</a>
+                        <a href='/login'  className={styles.nav_link}>Login</a>
                     </nav>
                 </div>
             </div>

@@ -16,6 +16,8 @@ import {getItemTC, StatusType} from "../features/Characters/Character/Equipment/
 export const Main = () => {
 
     const status: StatusType = "succeed";
+
+
     // const characters = useAppSelector(state => state.characters.characters)
     // console.log('CHARACTERS: '+characters)
     // const urls = Object.keys(characters)

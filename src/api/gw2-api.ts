@@ -4,50 +4,13 @@ import {StatusType} from "../features/Characters/Character/Equipment/ItemsToRend
 import {StatsType} from "../features/Characters/Character/Equipment/ItemsToRender/ItemToRender";
 import {EquipmentType} from "../features/Characters/Character/Equipment/ItemsData";
 
-const authInstance = axios.create({
-    baseURL: "https://social-network.samuraijs.com/api/1.1/",
-    withCredentials: true,
-    headers: {
-        "API-KEY": "d0c77b6f-d8e9-4ded-8d84-4e0164eb57c1"
-    }
-})
-// Auth Api
-export type LoginParamsType = {
-    email: string,
-    password: string,
-    rememberMe: boolean,
-    captcha?: string
-}
-
-export const authApi = {
-    // login(data: LoginParamsType) {
-    //     return instance.post<ResponseType<{userId?: number}>>('auth/login', data)
-    // },
-
-    async login(data: LoginParamsType) {
-        return await authInstance.post<ResponseType<{userId?: number}>>('auth/login', data)
-    },
-
-    async logout(){
-        return await authInstance.delete<ResponseType<{userId?: number}>>('auth/login')
-    },
-
-    async me(){
-        return await authInstance.get<ResponseType<{id: number, email: string, login: string}>>('auth/me')
-    }
-}
-
-export type ResponseType<D = {}> = {
-    resultCode: number,
-    messages: string,
-    data: D
-}
 
 //GW2 Api
 
-
-
 export const armoryApi = {
+    async getAccountName(token: string) {
+      return await instance.get<AccountType>(`v2/account?access_token=${token}`)
+    },
     async getCharacters(apiKey: string) {
         return await instance.get<CharacterType[]>('v2/characters?ids=all&access_token='+apiKey)
     },
@@ -125,6 +88,23 @@ export type ItemType = {
     stats?: StatsType
     // status?: StatusType
     text?: 'no such id'
+}
+
+export type AccountType = {
+    "id": string,
+    "name": string,
+    "age": number,
+    "world": number,
+    "guilds": string[],
+    "guild_leader": string[],
+    "created": string,
+    "access": string[],
+    "commander": boolean,
+    "fractal_level": number,
+    "daily_ap": number,
+    "monthly_ap": number,
+    "wvw_rank": number,
+    token?: string
 }
 
 // export type CharactersResponseType = {

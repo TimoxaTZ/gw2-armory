@@ -1,16 +1,25 @@
-import React from 'react';
-import {Button, FormControl, FormGroup, FormLabel, Grid, TextField} from "@material-ui/core";
+import React, {useEffect} from 'react';
+import {Button, FormControl, FormLabel, Grid, TextField} from "@material-ui/core";
 import {useFormik} from 'formik';
 import {useDispatch, useSelector} from "react-redux";
-import {loginTC} from "./auth-reducer";
-import {AppRootStateType} from "../../app/store";
 import {Redirect} from 'react-router-dom';
+import {getCharactersTC} from "../Characters/characters-reducer";
+import {setTokenTC} from "./token-reducer";
+import {useAppSelector} from "../../app/useAppSelector";
 
 
 export const Login = () => {
-
-    const dispatch = useDispatch()
     let isLoggedIn = false;
+    const dispatch = useDispatch()
+
+    // useEffect(() => {
+    //     dispatch(setTokenTC("D49F610A-5D10-0D4C-986A-B7469B305227A200CF65-E569-44AD-8403-2DF8D5C960D1"));
+    // }, [dispatch])
+
+    // const setToken = (token:string) => {
+    //         dispatch(setTokenTC(token));
+    //         isLoggedIn = true;
+    // }
 
     const formik = useFormik({
         validate: (values) => {
@@ -19,7 +28,6 @@ export const Login = () => {
                     apiKey: 'API-key is required'
                 }
             }
-
         },
 
         initialValues: {
@@ -27,17 +35,12 @@ export const Login = () => {
         },
         onSubmit: (values) => {
             // для бланка затереть эту строку
-            isLoggedIn = true;
-            // dispatch(loginTC(values))
-
+            dispatch(setTokenTC(values.apiKey))
         },
     });
 
-    // const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn);
-
-
     if (isLoggedIn) {
-        return <Redirect to={"/characters"}/>
+        return <Redirect to={'/123'}/>
     }
 
     return <div style={{padding: 100}}>
@@ -94,3 +97,5 @@ export const Login = () => {
     </div>
 
 }
+
+// onClick={() => setToken(formik.values.apiKey)}
