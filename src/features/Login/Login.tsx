@@ -9,20 +9,11 @@ import {Redirect} from 'react-router-dom';
 
 export const Login = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    let isLoggedIn = false;
 
     const formik = useFormik({
         validate: (values) => {
-            if (!values.email) {
-                return {
-                    email: 'Email is required'
-                }
-            }
-            if (!values.password) {
-                return {
-                    password: 'Password is required'
-                }
-            }
             if (!values.apiKey) {
                 return {
                     apiKey: 'API-key is required'
@@ -32,92 +23,74 @@ export const Login = () => {
         },
 
         initialValues: {
-            email: '',
-            password: '',
-            rememberMe: false,
             apiKey: ''
         },
         onSubmit: (values) => {
             // для бланка затереть эту строку
+            isLoggedIn = true;
             // dispatch(loginTC(values))
+
         },
     });
 
     // const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn);
-    const isLoggedIn = true;
 
-    // if (isLoggedIn) {
-    //     return <Redirect to={"/characters"}/>
-    // }
 
-    return <Grid container justify="center">
-        <Grid item xs={4}>
+    if (isLoggedIn) {
+        return <Redirect to={"/characters"}/>
+    }
+
+    return <div style={{padding: 100}}>
+        <Grid container
+              justify="center">
             <div style={{backgroundColor: "rgba(234,234,234,0.15)"}}>
                 <form onSubmit={formik.handleSubmit}>
                     <FormControl>
-                        <FormGroup>
-                            <FormLabel>
-                                <h3>Instructions</h3>
-                                <p>
-                                    1. To get your personal API-key you need to <a href={'https://account.arena.net/applications'}
-                                                                                   target={'_blank'}>Open the official Guild Wars 2 API Key Management</a> then click "Applications".
-                                </p>
-                                <p>
-                                    2. Click on the "New Key" button.
-                                </p>
-                                <p>
-                                    3. Enter a name of your choice and check all permission checkboxes.
-                                </p>
-                                <p>
-                                    4. Copy your new API key. (CTRL + C)
-                                </p>
-                                <p>
-                                    5. Paste it in the form below. (CTRL + V)
-                                </p>
-                                <p>
-                                    6. Click the "Save new API key" button.
-                                </p>
-                                <p>
-                                    7. You are set, have fun exploring your account!
-                                </p>
-                            </FormLabel>
-                            {/*<TextField*/}
-                            {/*    label="Email"*/}
-                            {/*    margin="normal"*/}
-                            {/*    // передаем в пропсы полученный текст, для бланка затереть эту строку*/}
-                            {/*    {...formik.getFieldProps("email")}*/}
-                            {/*/>*/}
-                            {/*{formik.errors.email ? <div>{formik.errors.email}</div> : null}*/}
-                            {/*<TextField*/}
-                            {/*    type="password"*/}
-                            {/*    label="Password"*/}
-                            {/*    margin="normal"*/}
-                            {/*    // передаем в пропсы полученный текст, для бланка затереть эту строку*/}
-                            {/*    {...formik.getFieldProps("password")}*/}
-                            {/*/>*/}
-                            {/*{formik.errors.password ? <div>{formik.errors.password}</div> : null}*/}
+                        <FormLabel>
+                            <h3 style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center"
+                            }}>Instructions</h3>
+                            <p>
+                                1. To get your personal API-key you need to <a
+                                href={'https://account.arena.net/applications'}
+                                target={'_blank'}>Open the official Guild Wars 2 API Key Management</a> then click
+                                "Applications".
+                            </p>
+                            <p>
+                                2. Click on the "New Key" button.
+                            </p>
+                            <p>
+                                3. Enter a name of your choice and check all permission checkboxes.
+                            </p>
+                            <p>
+                                4. Copy your new API key. (CTRL + C)
+                            </p>
+                            <p>
+                                5. Paste it in the form below. (CTRL + V)
+                            </p>
+                            <p>
+                                6. Click the "Save new API key" button.
+                            </p>
+                            <p>
+                                7. You are set, have fun exploring your account!
+                            </p>
+                        </FormLabel>
 
-                            <TextField
-                                label="Personal API-key:"
-                                margin="normal"
-                                // передаем в пропсы полученный текст, для бланка затереть эту строку
-                                {...formik.getFieldProps("apiKey")}
-                            />
-                            {formik.errors.apiKey ? <div>{formik.errors.apiKey}</div> : null}
+                        <TextField
+                            label="Personal API-key:"
+                            margin="normal"
+                            // передаем в пропсы полученный текст, для бланка затереть эту строку
+                            {...formik.getFieldProps("apiKey")}
+                        />
+                        {formik.errors.apiKey ? <div>{formik.errors.apiKey}</div> : null}
 
-                            {/*<FormControlLabel*/}
-                            {/*    label={'Remember me'}*/}
-                            {/*    control={<Checkbox*/}
-                            {/*        // передаем в пропсы полученный текст, для бланка затереть эти строки*/}
-                            {/*        {...formik.getFieldProps("rememberMe")}*/}
-                            {/*        checked={formik.values.rememberMe}*/}
-                            {/*    />}*/}
-                            {/*/>*/}
-                            <Button type={"submit"} variant={'contained'} color={'secondary'}>Save your API-key</Button>
-                        </FormGroup>
+                        <Button type={"submit"} variant={'contained'} color={'secondary'}>Save your API-key</Button>
                     </FormControl>
                 </form>
             </div>
         </Grid>
-    </Grid>
+    </div>
+
 }
