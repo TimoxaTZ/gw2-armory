@@ -9,16 +9,18 @@ import {Container} from "@material-ui/core";
 
 export const Content = () => {
     return (
-
-        <div className={styles.style}>
+        <Container className={styles.style}>
+            <div>
                 <ContentTitle/>
                 <ContentFilling/>
 
                 <div className={styles.buttons}>
                     <Button buttonUrl={'/characters'} buttonName='Characters' buttonStyle={2}/>
-                    <Button buttonUrl={'/login'} buttonName='Change API token'buttonStyle={1}/>
+                    <Button buttonUrl={'/login'} buttonName='Login' buttonStyle={1}/>
+                    {/*<Button buttonUrl={'/login'} buttonName='Change API token'buttonStyle={1}/>*/}
                 </div>
             </div>
+        </Container>
     )
 }
 

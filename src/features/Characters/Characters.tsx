@@ -12,7 +12,13 @@ import {CharacterType} from "../../api/gw2-api";
 
 export const Characters = (props: any) => {
 
-    debugger
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCharactersTC("D49F610A-5D10-0D4C-986A-B7469B305227A200CF65-E569-44AD-8403-2DF8D5C960D1"));
+    }, [dispatch])
+
+    // debugger
     // const dispatch = useDispatch();
     // // const characters = useSelector<AppRootStateType, Array<CharacterType>>(state => state.characters.characters)
     // const characters = useAppSelector(state => state.characters.characters)

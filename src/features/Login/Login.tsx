@@ -39,15 +39,16 @@ export const Login = () => {
         },
         onSubmit: (values) => {
             // для бланка затереть эту строку
-            dispatch(loginTC(values))
+            // dispatch(loginTC(values))
         },
     });
 
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn);
+    // const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn);
+    const isLoggedIn = true;
 
-    if (isLoggedIn) {
-        return <Redirect to={"/characters"}/>
-    }
+    // if (isLoggedIn) {
+    //     return <Redirect to={"/characters"}/>
+    // }
 
     return <Grid container justify="center">
         <Grid item xs={4}>
