@@ -7,9 +7,9 @@ import {EquipmentType} from "../Characters/Character/Equipment/ItemsData";
 
 
 export const setTokenTC = createAsyncThunk<AccountType, string, ErrorType>('set-account', async (params)=> {
+    localStorage.setItem("token", params)
     const res = await armoryApi.getAccountName(params)
     res.data = {...res.data, token: params}
-    debugger
     return res.data
 })
 
@@ -21,7 +21,7 @@ const slice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(getCharactersTC.fulfilled, (state, action) => {
+            .addCase(setTokenTC.fulfilled, (state, action) => {
                 state.account = action.payload
             })
     }

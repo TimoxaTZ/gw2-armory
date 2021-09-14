@@ -6,6 +6,7 @@ export type ButtonPropsType = {
     buttonUrl: string
     buttonName: string
     buttonStyle: 1 | 2;
+    resetStorage?: boolean
 }
 
 const highlight = {
@@ -15,6 +16,11 @@ const highlight = {
 
 
 export const Button = (props: ButtonPropsType) => {
+
+    if (props.resetStorage) {
+        localStorage.clear();
+    }
+
     return (
         <div className={styles.button_style_container}>
             <NavLink to={props.buttonUrl} className={highlight[props.buttonStyle]}>

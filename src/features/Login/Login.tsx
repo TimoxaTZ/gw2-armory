@@ -9,17 +9,10 @@ import {useAppSelector} from "../../app/useAppSelector";
 
 
 export const Login = () => {
-    let isLoggedIn = false;
+
     const dispatch = useDispatch()
+    // const token = localStorage.getItem("token")
 
-    // useEffect(() => {
-    //     dispatch(setTokenTC("D49F610A-5D10-0D4C-986A-B7469B305227A200CF65-E569-44AD-8403-2DF8D5C960D1"));
-    // }, [dispatch])
-
-    // const setToken = (token:string) => {
-    //         dispatch(setTokenTC(token));
-    //         isLoggedIn = true;
-    // }
 
     const formik = useFormik({
         validate: (values) => {
@@ -36,11 +29,15 @@ export const Login = () => {
         onSubmit: (values) => {
             // для бланка затереть эту строку
             dispatch(setTokenTC(values.apiKey))
+
         },
     });
 
-    if (isLoggedIn) {
-        return <Redirect to={'/123'}/>
+    // const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn);
+    const token = useAppSelector(state => state.token.account.token)
+
+    if (token) {
+        return <Redirect to={'/'}/>
     }
 
     return <div style={{padding: 100}}>

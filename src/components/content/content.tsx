@@ -8,6 +8,9 @@ import {Container} from "@material-ui/core";
 
 
 export const Content = () => {
+
+    const token = localStorage.getItem('token')
+
     return (
         <Container className={styles.style}>
             <div>
@@ -16,7 +19,11 @@ export const Content = () => {
 
                 <div className={styles.buttons}>
                     <Button buttonUrl={'/characters'} buttonName='Characters' buttonStyle={2}/>
-                    <Button buttonUrl={'/login'} buttonName='Login' buttonStyle={1}/>
+                    {token == null ?
+                        <Button buttonUrl={'/auth'} buttonName='Login' buttonStyle={1}/>
+                            : <div/>
+                        // <Button resetStorage={true} buttonUrl={'/auth'} buttonName='Change API-key' buttonStyle={1}/>
+                        }
                     {/*<Button buttonUrl={'/login'} buttonName='Change API token'buttonStyle={1}/>*/}
                 </div>
             </div>
