@@ -35,11 +35,19 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
             return {...character, equipment: newEquipResponse}
         })
         const response = await Promise.all(charactersPromises)
-        return response
+        // return response
 
+        const characters: CharactersReducedType = response.reduce((acc, character) => {
+                return {
+                    ...acc, [character.name]: {
+                        ...character
+                    }
+                };
+            }, {});
+            return characters
     }
     return {}
-    // const data: CharacterType[] = useAppSelector(state => state.characters.characters)
+
     // const characters: CharactersReducedType = res.data.reduce((acc, character) => {
     // //     return {
     // //         ...acc, [character.name]: {

@@ -29,7 +29,6 @@ export const Token = () => {
         onSubmit: (values) => {
             // для бланка затереть эту строку
             dispatch(setTokenTC(values.apiKey))
-
         },
     });
 

@@ -48,7 +48,7 @@ export const Main = () => {
                 <Container className={styles.style}>
                     <Route exact path={'/'} render={() => <Content/>}/>
                     <Route exact path={'/auth'} render={() => <Token/>}/>
-                    {/*<Route exact path={'/characters'} render={() => <Characters characters={urls}/>}/>*/}
+                    <Route exact path={'/characters'} render={() => <Characters/>}/>
 
                     {/*{urls.map(c => {*/}
                     {/*    return <Route exact path={`/characters/:id`} render={() => <Character/>}/>*/}

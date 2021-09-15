@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './header.module.css'
 import logo from './../../assets/images/logo.jpg'
-import {Token} from "../../features/Token/Token";
 import {useAppSelector} from "../../app/useAppSelector";
-
 
 
 export const Header = () => {

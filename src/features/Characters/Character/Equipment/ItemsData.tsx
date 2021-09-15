@@ -4,13 +4,13 @@ import React from "react";
 import {ItemToRender} from "./ItemsToRender/ItemToRender";
 
 export const ItemsData = (props: CharacterType) => {
-    const data = useAppSelector(state => state.characters.characters)
+    // const data = useAppSelector(state => state.characters.characters)
 
 
-    const character = data[props.name]
-    const equipment = character['equipment']
+    // const character = data[props.name]
+    // const equipment = character['equipment']
 
-    return equipment? <ItemToRender equipment={equipment}/> : <div></div>
+    // return equipment? <ItemToRender equipment={equipment}/> : <div></div>
 }
 
 export type CharactersReducedType = {

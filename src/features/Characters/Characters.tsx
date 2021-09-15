@@ -12,16 +12,21 @@ import {CharacterType} from "../../api/gw2-api";
 
 export const Characters = (props: any) => {
 
+    const token = localStorage.getItem('token')
+
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getCharactersTC("D49F610A-5D10-0D4C-986A-B7469B305227A200CF65-E569-44AD-8403-2DF8D5C960D1"));
+        token && dispatch(getCharactersTC(token));
     }, [dispatch])
 
     // debugger
     // const dispatch = useDispatch();
-    // // const characters = useSelector<AppRootStateType, Array<CharacterType>>(state => state.characters.characters)
-    // const characters = useAppSelector(state => state.characters.characters)
+    // const characters = useSelector<AppRootStateType, Array<CharacterType>>(state => state.characters.characters)
+    const characters = useAppSelector(state => state.characters.characters)
+    console.log(characters)
+    console.log(characters['Cofresi'].name)
+    // console.log(characters)
     //
     // useEffect(() => {
     //     dispatch(getCharactersTC("D49F610A-5D10-0D4C-986A-B7469B305227A200CF65-E569-44AD-8403-2DF8D5C960D1"));
@@ -32,24 +37,24 @@ export const Characters = (props: any) => {
     return (
         <div className={styles.intro}>
 
-                <Grid container
-                    direction="row"
-                    item xs zeroMinWidth
-                    justifyContent="center"
-                    alignItems="center">
+                {/*<Grid container*/}
+                {/*    direction="row"*/}
+                {/*    item xs zeroMinWidth*/}
+                {/*    justifyContent="center"*/}
+                {/*    alignItems="center">*/}
 
-                    {props.characters.map((c:any) =>
-                                <div className={styles.textfield}>
-                                    <NavLink className={styles.nav} to={`/characters/${c.name}`}>
-                                        <span>
-                                            {c.name}
-                                        </span>
-                                    </NavLink>
+                {/*    {props.characters.map((c:any) =>*/}
+                {/*                <div className={styles.textfield}>*/}
+                {/*                    <NavLink className={styles.nav} to={`/characters/${c.name}`}>*/}
+                {/*                        <span>*/}
+                {/*                            {c.name}*/}
+                {/*                        </span>*/}
+                {/*                    </NavLink>*/}
 
-                                    {/*<Route exact path={`/characters/${c.name}`} render={() => <Character name={c.name}/>}/>*/}
+                {/*                    /!*<Route exact path={`/characters/${c.name}`} render={() => <Character name={c.name}/>}/>*!/*/}
 
-                                </div>)}
-                </Grid>
+                {/*                </div>)}*/}
+                {/*</Grid>*/}
         </div>
     )
 }
