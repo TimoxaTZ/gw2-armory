@@ -6,7 +6,7 @@ import {getCharactersTC} from "./characters-reducer";
 import {useAppSelector} from "../../app/useAppSelector";
 import {NavLink, Redirect, Route} from "react-router-dom";
 import { Character } from './Character/Character';
-import { Login } from '../Login/Login';
+import { Token } from '../Token/Token';
 import {CharacterType} from "../../api/gw2-api";
 
 

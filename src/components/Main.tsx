@@ -4,7 +4,7 @@ import {Header} from "./header/header";
 import {Content} from "./content/content";
 import {CircularProgress, Container} from "@material-ui/core";
 import {NavLink, Route} from "react-router-dom";
-import {Login} from "../features/Login/Login";
+import {Token} from "../features/Token/Token";
 import {Characters} from "../features/Characters/Characters";
 import {useAppSelector} from "../app/useAppSelector";
 import {Character} from "../features/Characters/Character/Character";
@@ -47,7 +47,7 @@ export const Main = () => {
             <div className={styles.background}>
                 <Container className={styles.style}>
                     <Route exact path={'/'} render={() => <Content/>}/>
-                    <Route exact path={'/auth'} render={() => <Login/>}/>
+                    <Route exact path={'/auth'} render={() => <Token/>}/>
                     {/*<Route exact path={'/characters'} render={() => <Characters characters={urls}/>}/>*/}
 
                     {/*{urls.map(c => {*/}

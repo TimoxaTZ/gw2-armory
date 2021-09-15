@@ -2,7 +2,7 @@ import {combineReducers} from "redux";
 import thunkMiddleware from "redux-thunk";
 import {configureStore} from "@reduxjs/toolkit";
 import {charactersReducer} from "../features/Characters/characters-reducer";
-import {tokenReducer} from "../features/Login/token-reducer";
+import {tokenReducer} from "../features/Token/token-reducer";
 import {characterReducer} from "../features/Characters/Character/character-reducer";
 import {itemsReducer} from "../features/Characters/Character/Equipment/ItemsToRender/items-reducer";
 

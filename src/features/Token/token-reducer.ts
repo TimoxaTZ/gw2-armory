@@ -1,9 +1,6 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {AccountType, armoryApi, CharacterType} from "../../api/gw2-api";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {AccountType, armoryApi} from "../../api/gw2-api";
 import {ErrorType} from "../Characters/Character/character-reducer";
-import {getCharactersTC} from "../Characters/characters-reducer";
-import {EquipmentType} from "../Characters/Character/Equipment/ItemsData";
-
 
 
 export const setTokenTC = createAsyncThunk<AccountType, string, ErrorType>('set-account', async (params)=> {

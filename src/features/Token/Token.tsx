@@ -8,7 +8,7 @@ import {setTokenTC} from "./token-reducer";
 import {useAppSelector} from "../../app/useAppSelector";
 
 
-export const Login = () => {
+export const Token = () => {
 
     const dispatch = useDispatch()
     // const token = localStorage.getItem("token")
