@@ -2,8 +2,7 @@ import React from "react";
 import styles from "./ItemsBlock.module.css"
 import {Grid} from "@material-ui/core";
 import {ItemRender} from "./ItemRender/ItemRender";
-import {ItemType} from "../../../../../api/gw2-api";
-import {EquipmentType} from "../../../characters-reducer";
+import {EquipmentType, ItemType} from "../../../../../api/gw2-api";
 
 
 export const ItemToRender = (props: {equipment: EquipmentType[]}) => {

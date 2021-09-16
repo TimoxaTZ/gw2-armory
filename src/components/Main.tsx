@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './main.module.css'
 import {Header} from "./header/header";
 import {Content} from "./content/content";
@@ -8,17 +8,26 @@ import {Token} from "../features/Token/Token";
 import {Characters} from "../features/Characters/Characters";
 import {useAppSelector} from "../app/useAppSelector";
 import {Character} from "../features/Characters/Character/Character";
-import {CharacterType} from "../api/gw2-api";
-import {CharactersReducedType} from "../features/Characters/characters-reducer";
-// import {StatusType} from "../features/Characters/Character/Equipment/ItemsToRender/items-reducer";
+import {getCharactersTC} from "../features/Characters/characters-reducer";
+import {useDispatch} from "react-redux";
+import {CharactersReducedType, StatusType} from "../api/gw2-api";
 
-export type StatusType = 'loading' | 'succeed' | 'failed'
 
 export const Main = () => {
 
-    const status: StatusType = "succeed";
+    const token = localStorage.getItem('token')
+
+    const dispatch = useDispatch();
+    let status: StatusType = "loading";
+
+    useEffect(() => {
+        token && dispatch(getCharactersTC(token));
+    }, [dispatch])
 
     const characters:CharactersReducedType = useAppSelector(state => state.characters.characters)
+
+    characters ? status = 'succeed' : status = "loading"
+
     const urls = Object.keys(characters)
 
     if (status !== "succeed") {
@@ -50,7 +59,6 @@ export const Main = () => {
                     <Route exact path={'/'} render={() => <Content/>}/>
                     <Route exact path={'/auth'} render={() => <Token/>}/>
                     <Route exact path={'/characters'} render={() => <Characters characters={characters}/>}/>
-                    {/*<Route exact path={`characters/:id`} render={() => <Character/>}/>*/}
                     {urls.map(id => {
                         return <Route exact path={`/characters/${id}`} render={() => <Character character={characters[id]}/>}/>
                     })}

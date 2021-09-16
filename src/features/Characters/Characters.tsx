@@ -1,43 +1,34 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Grid} from "@material-ui/core";
-import {useDispatch} from "react-redux";
 import styles from './characters.module.css'
-import {CharactersReducedType, getCharactersTC} from "./characters-reducer";
 import {NavLink} from "react-router-dom";
-import {useAppSelector} from "../../app/useAppSelector";
+import {CharactersReducedType} from "../../api/gw2-api";
 
 
-export const Characters = (props: {characters: CharactersReducedType}) => {
-
-    const token = localStorage.getItem('token')
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        token && dispatch(getCharactersTC(token));
-    }, [dispatch])
+export const Characters = (props: { characters: CharactersReducedType }) => {
 
 
-    const charactersList = Object.keys(props.characters)
+    const characters: CharactersReducedType = props.characters
+    const charactersList: string[] = Object.keys(characters)
 
     return (
         <div className={styles.intro}>
 
-                <Grid container
-                    direction="row"
-                    item xs zeroMinWidth
-                    justifyContent="center"
-                    alignItems="center">
-                    {charactersList.map((character:string) =>
-                                <div className={styles.textfield}>
-                                    <NavLink className={styles.nav} to={`/characters/${character}`}>
+            <Grid container
+                  direction="row"
+                  item xs zeroMinWidth
+                  justifyContent="center"
+                  alignItems="center">
+                {charactersList.map((character: string) =>
+                    <div className={styles.textfield}>
+                        <NavLink className={styles.nav} to={`/characters/${character}`}>
                                         <span>
                                             {character}
                                         </span>
-                                    </NavLink>
-                                </div>)
-                    }
-                </Grid>
+                        </NavLink>
+                    </div>)
+                }
+            </Grid>
         </div>
     )
 }

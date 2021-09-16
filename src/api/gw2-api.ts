@@ -1,6 +1,5 @@
 import {instance} from "./instance";
 import {StatsType} from "../features/Characters/Character/Equipment/ItemsToRender/ItemToRender";
-import {EquipmentType} from "../features/Characters/characters-reducer";
 
 
 //GW2 Api
@@ -20,14 +19,63 @@ export const armoryApi = {
     }
 }
 
+
+
+
+// -------------------  TYPES -------------------//
+
+
 export type GetCharacterType = {
     apiKey: string,
     characterName: string
 }
 
-export type GetItemType = {
-    itemId: number
+
+export type ErrorType = {
+    rejectValue: {
+        error?: string,
+        text?: string
+    }
 }
+export type CharactersReducedType = {
+    [characterName: string]: CharacterType
+}
+export type EquipmentType = {
+    id: number,
+    slot: string,
+    upgrades: [],
+    infusions?: [],
+    stats: { id: number, attributes: {} }
+    skin: number,
+    binding: string,
+    bound_to: string
+    statsStorage?: {
+        chat_link: [string],
+        default_skin: number
+        description: string
+        details: {
+            type: string,
+            weight_class: 'Light' | 'Medium' | 'Heavy',
+            defense: number,
+            infusion_slots: number[],
+            attribute_adjustment: number
+            infix_upgrade: { id: number, attributes: [] }
+            secondary_suffix_item_id: string
+            suffix_item_id: number
+        }
+        flags: string[]
+        game_types: string[]
+        icon: string
+        id: number
+        level: number
+        name: string
+        rarity: string
+        restrictions: []
+        type: string
+        vendor_value: number
+    }
+}
+export type StatusType = 'loading' | 'succeed' | 'failed'
 
 export type CharacterType = {
     "name": string,
@@ -115,8 +163,4 @@ export type AccountType = {
     "wvw_rank": number,
     token?: string
 }
-
-// export type CharactersResponseType = {
-//     data:CharacterType []
-// };
 
