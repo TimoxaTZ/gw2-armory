@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Container, Grid} from "@material-ui/core";
+import {CircularProgress, Container, Grid} from "@material-ui/core";
 import {useDispatch} from "react-redux";
 import styles from './characters.module.css'
 import {getCharactersTC} from "./characters-reducer";
@@ -8,9 +8,11 @@ import {NavLink, Redirect, Route} from "react-router-dom";
 import { Character } from './Character/Character';
 import { Token } from '../Token/Token';
 import {CharacterType} from "../../api/gw2-api";
+import {StatusType} from "./Character/Equipment/ItemsToRender/items-reducer";
+import {Header} from "../../components/header/header";
 
 
-export const Characters = (props: any) => {
+export const Characters = (props: {characters:string[]}) => {
 
     const token = localStorage.getItem('token')
 
@@ -20,41 +22,26 @@ export const Characters = (props: any) => {
         token && dispatch(getCharactersTC(token));
     }, [dispatch])
 
-    // debugger
-    // const dispatch = useDispatch();
-    // const characters = useSelector<AppRootStateType, Array<CharacterType>>(state => state.characters.characters)
-    const characters = useAppSelector(state => state.characters.characters)
-    console.log(characters)
-    console.log(characters['Cofresi'].name)
-    // console.log(characters)
-    //
-    // useEffect(() => {
-    //     dispatch(getCharactersTC("D49F610A-5D10-0D4C-986A-B7469B305227A200CF65-E569-44AD-8403-2DF8D5C960D1"));
-    // }, [dispatch])
-
-    // @ts-ignore
 
     return (
         <div className={styles.intro}>
 
-                {/*<Grid container*/}
-                {/*    direction="row"*/}
-                {/*    item xs zeroMinWidth*/}
-                {/*    justifyContent="center"*/}
-                {/*    alignItems="center">*/}
+                <Grid container
+                    direction="row"
+                    item xs zeroMinWidth
+                    justifyContent="center"
+                    alignItems="center">
 
-                {/*    {props.characters.map((c:any) =>*/}
-                {/*                <div className={styles.textfield}>*/}
-                {/*                    <NavLink className={styles.nav} to={`/characters/${c.name}`}>*/}
-                {/*                        <span>*/}
-                {/*                            {c.name}*/}
-                {/*                        </span>*/}
-                {/*                    </NavLink>*/}
-
-                {/*                    /!*<Route exact path={`/characters/${c.name}`} render={() => <Character name={c.name}/>}/>*!/*/}
-
-                {/*                </div>)}*/}
-                {/*</Grid>*/}
+                    {props.characters.map((character:string) =>
+                                <div className={styles.textfield}>
+                                    <NavLink className={styles.nav} to={`/characters/${character}`}>
+                                        <span>
+                                            {character}
+                                        </span>
+                                    </NavLink>
+                                </div>)//
+                    }
+                </Grid>
         </div>
     )
 }

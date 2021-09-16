@@ -1,31 +1,20 @@
 import React from 'react';
-import {useDispatch} from "react-redux";
-import {useAppSelector} from "../../../app/useAppSelector";
 import {CharacterType} from "../../../api/gw2-api";
 import styles from './character.module.css'
 import buttonStyles from './../../../components/content/buttons/button.module.css'
 import {Button} from '../../../components/content/buttons/button';
 import {ItemToRender} from "./Equipment/ItemsToRender/ItemToRender";
-import {ItemsData} from "./Equipment/ItemsData";
-import { useParams } from 'react-router-dom';
 
-export const Character = () => {
-
-const dispatch = useDispatch();
-
-    // const characterName = useAppSelector(state => state.characters.characters.filter(c => c.name === props.name).map(currentCharacter => currentCharacter.name)[0])
-    const {id} = useParams<{id: string}>()
-
+export const Character = (props: {character: CharacterType}) => {
 
     return (
         <div>
             <div className={styles.inner}>
                 <h1 >
-                    {/*{characterName}*/}
-                    {id}
+                    {props.character.name}
                 </h1>
                 <h2 >
-                    {/*<ItemsToRender name={props.name}/>*/}
+                    <ItemToRender equipment={props.character.equipment}/>
                     {/*<ItemsData name={props.name}/>*/}
                 </h2>
             </div>

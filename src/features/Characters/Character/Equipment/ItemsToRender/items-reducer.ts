@@ -8,7 +8,7 @@ import {useAppSelector} from "../../../../../app/useAppSelector";
 //createAsyncThunk<что принимает, тип принимаемого, тип ошибки>("уникальный_строковый_ид_санки", async(параметры) => { const res = await apiFunc(параметры)
 export const getItemTC = createAsyncThunk<ItemType, {id: number, stats: StatsType}, ErrorType>('item-get', async (params)=> {
     const res = await armoryApi.getItem(params.id)
-    res.data.stats = params.stats;
+    res.data.statsStorage.stats = params.stats;
     return res.data
     // WORKS FINE. TESTED.
 })

@@ -35,7 +35,7 @@ export const ItemRender = (props: ItemRenderPropsType) => {
                 {props.defenseTooltip}
             </div>
             <div>
-                {props.statsOfItem}
+                {/*{props.statsOfItem}*/}
                 {/*{stats}*/}
             </div>
         </div>
@@ -65,8 +65,8 @@ export type ItemRenderPropsType = {
     defenseTooltip: string | null,
     itemTypeTooltip: string,
     itemRarity: string,
-    itemWeightClass: string,
-    itemStats: AttributesType | undefined
+    itemWeightClass?: string,
+    itemStats?: AttributesType | undefined
     statsOfItem?: string
     // itemId: number,
 }

@@ -25,7 +25,30 @@ export type EquipmentType = {
     skin: number,
     binding: string,
     bound_to: string
-    statsStorage?: any
+    statsStorage?: {
+        chat_link: [string],
+        default_skin: number
+        description: string
+        details: {type: string,
+            weight_class: 'Light' | 'Medium' | 'Heavy',
+            defense: number,
+            infusion_slots: number[],
+            attribute_adjustment: number
+            infix_upgrade: {id: number, attributes: []}
+            secondary_suffix_item_id: string
+            suffix_item_id: number
+        }
+        flags: string[]
+        game_types: string[]
+        icon: string
+        id: number
+        level: number
+        name: string
+        rarity: string
+        restrictions: []
+        type: string
+        vendor_value: number
+    }
 }
 
 

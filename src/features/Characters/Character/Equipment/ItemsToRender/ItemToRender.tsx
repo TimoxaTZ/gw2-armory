@@ -6,10 +6,13 @@ import {getItemTC, ItemsType} from "./items-reducer";
 import {useAppSelector} from "../../../../../app/useAppSelector";
 import {useDispatch} from "react-redux";
 import {ItemRender} from "./ItemRender/ItemRender";
+import {ItemType} from "../../../../../api/gw2-api";
 
 
 
-export const ItemToRender = (props: { equipment: EquipmentType[] }) => {
+export const ItemToRender = (props: {equipment: EquipmentType[]}) => {
+
+    console.log(props.equipment)
 
     return (
         <div className={styles.intro}>
@@ -20,10 +23,11 @@ export const ItemToRender = (props: { equipment: EquipmentType[] }) => {
                   alignItems="center">
 
                 {props.equipment.map((item: any) => {
+                    console.log(item)
                     return (
                         <div className={styles.textfield}>
                             {/*{`${item.slot}: ${item.id}`}*/}
-                            <Item itemId={item.id} stats={item.stats}/>
+                            <Item item={item}/>
                         </div>
                     )
                 })}
@@ -34,74 +38,37 @@ export const ItemToRender = (props: { equipment: EquipmentType[] }) => {
 }
 
 
-export const Item = (props: { itemId: number, stats: StatsType }) => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getItemTC({id: props.itemId, stats: props.stats}))
-    }, [dispatch])
+export const Item = (props: {item: ItemType}) => {
 
-    const items: ItemsType = useAppSelector(state => state.item)
-    const currentItem = items[props.itemId]
+    // const items: ItemsType = useAppSelector(state => state.item)
+    const currentItem = props.item
+    console.log('Current item: ')
+    console.log(currentItem)
 
     if (currentItem) {
 
-        let itemsTypeTooltip = currentItem.details.type ? currentItem.details.type : currentItem.type
-        let defenseTooltip = currentItem.type === 'Armor' ? 'Defense: ' + currentItem.details.defense : null;
-        let stats = currentItem.stats?.attributes;
-        //  данные для типа шмота (марадер, валькирия и тд)
-        // let stats = currentItem.stats?.id;
+        let itemsTypeTooltip = currentItem.statsStorage.details.type ? currentItem.statsStorage.details.type : currentItem.statsStorage.type
+        let defenseTooltip = currentItem.statsStorage.type === 'Armor' ? 'Defense: ' + currentItem.statsStorage.details.defense : null;
+        // let stats = currentItem.stats?.attributes;
+
+        // let statsOfItem;
         // if (stats) {
-        //     console.log(currentItem.name + " " + stats)
-        // }
-        // данные для типа шмота (марадер, валькирия и тд)
-
-        //  данные для статов шмота
-
-        // if (stats) {
-        //     console.log(currentItem.name + " " + stats)
-        // }
-        let statsOfItem;
-        if (stats) {
-            for (const [key, value] of Object.entries(stats)) {
-                console.log(currentItem.name + " stats: " + `${key}: ${value}`);
-                statsOfItem = `${key}: ${value}`;
-
-            }
-        }
-        // данные для статов шмота
-
-        // if (currentItem.stats?.attributes) {
-        //     for (const [key, value] of Object.entries(currentItem.stats?.attributes)) {
-        //         console.log(`${key}: ${value}`);
-        //         // let statsOfItem = `${key}: ${value}`;
+        //     for (const [key, value] of Object.entries(stats)) {
+        //         console.log(currentItem.name + " stats: " + `${key}: ${value}`);
+        //         statsOfItem = `${key}: ${value}`;
         //
         //     }
         // }
 
-        // if (stats) {
-        //     let keys = Object.keys(stats)
-        //     let values = Object.values(stats)
-        //     {keys.map(k => {
-        //         // values.map(v => console.log (k + ": " + v))
-        //         values.map(v => {
-        //             return (
-        //                 <div>
-        //                     {k}: {v}
-        //                 </div>
-        //             )
-        //         })
-        //     })}
-        // }
-
-
-        return <ItemRender itemIcon={currentItem.icon}
-                           itemName={currentItem.name}
+        return <ItemRender itemIcon={currentItem.statsStorage.icon}
+                           itemName={currentItem.statsStorage.name}
                            defenseTooltip={defenseTooltip}
                            itemTypeTooltip={itemsTypeTooltip}
-                           itemRarity={currentItem.rarity}
-                           itemWeightClass={currentItem.details.weight_class}
-                           itemStats={stats}
-        statsOfItem={statsOfItem}/>
+                           itemRarity={currentItem.statsStorage.rarity}
+                           itemWeightClass={currentItem.statsStorage.details.weight_class}
+                           // itemStats={stats}
+        // statsOfItem={statsOfItem}
+        />
 
     }
     return <div>

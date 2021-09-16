@@ -46,7 +46,7 @@ export type CharacterType = {
     // "title"?: 365,
     // "backstory"?: [],
     // "wvw_abilities"?: [],
-    "equipment"?:
+    "equipment":
         EquipmentType[],
     // "recipes"?: [],
     // "training"?: [],
@@ -57,35 +57,46 @@ export type CharacterType = {
 };
 
 export type ItemType = {
-    name: string,
-    type: string,
-    level: number,
-    rarity: string,
-    vendor_value: number,
-    default_skin: number,
-    game_types: [],
-    flags: [],
-    restrictions: [],
-    id: number,
-    chat_link: string,
-    icon: string,
-
-    details: {
-        infusion_slots: [
-            {
-                flags: [string]
-            }
-        ],
+    binding: string
+    bound_to: string
+    id: number
+    skin: number
+    slot: string
+    statsStorage: {
+        name: string,
         type: string,
-        defense: number,
-        weight_class: "Medium" | "Heavy" | 'Light',
-        attribute_adjustment: number,
-        stat_choices: [],
-        secondary_suffix_item_id: string
-    },
+        level: number,
+        rarity: string,
+        vendor_value: number,
+        default_skin: number,
+        game_types: [],
+        flags: [],
+        restrictions: [],
+        id: number,
+        chat_link: string,
+        icon: string,
+        details: {
+            attributes?: [
+                {attribute: string,
+                    modifier: number}
+                    ]
 
+            infusion_slots?: [
+                {
+                    flags: [string]
+                }
+            ],
+            type: string,
+            defense?: number,
+            weight_class?: "Medium" | "Heavy" | 'Light',
+            attribute_adjustment?: number,
+            stat_choices?: [],
+            secondary_suffix_item_id?: string
+        },
+        stats?: StatsType
+    }
+    upgrades: [24739]
 
-    stats?: StatsType
     // status?: StatusType
     text?: 'no such id'
 }

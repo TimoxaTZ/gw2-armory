@@ -16,9 +16,9 @@ import {getItemTC, StatusType} from "../features/Characters/Character/Equipment/
 export const Main = () => {
 
     const status: StatusType = "succeed";
-        // const characters = useAppSelector(state => state.characters.characters)
-    // console.log('CHARACTERS: '+characters)
-    // const urls = Object.keys(characters)
+
+    const characters = useAppSelector(state => state.characters.characters)
+    const urls = Object.keys(characters)
 
     if (status !== "succeed") {
         return (
@@ -48,11 +48,11 @@ export const Main = () => {
                 <Container className={styles.style}>
                     <Route exact path={'/'} render={() => <Content/>}/>
                     <Route exact path={'/auth'} render={() => <Token/>}/>
-                    <Route exact path={'/characters'} render={() => <Characters/>}/>
-
-                    {/*{urls.map(c => {*/}
-                    {/*    return <Route exact path={`/characters/:id`} render={() => <Character/>}/>*/}
-                    {/*})}*/}
+                    <Route exact path={'/characters'} render={() => <Characters characters={urls}/>}/>
+                    {/*<Route exact path={`characters/:id`} render={() => <Character/>}/>*/}
+                    {urls.map(id => {
+                        return <Route exact path={`/characters/${id}`} render={() => <Character character={characters[id]}/>}/>
+                    })}
 
                     {/*<Navbar/>*/}
                     {/*<Footer/>*/}
