@@ -1,5 +1,9 @@
-import {armoryApi, CharactersReducedType, CharacterType, EquipmentType, ErrorType, StatusType} from "../../api/gw2-api";
+import {armoryApi} from "../../api/gw2-api";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {CharactersReducedType, CharacterType, EquipmentType, ErrorType, StatusType} from "../../app/app-types";
+
+
+
 
 //createAsyncThunk<что ВОЗВРАЩАЕТ, что ПРИНИМАЕТ, тип ошибки>("уникальный_строковый_ид_санки", async(параметры) => { const res = await apiFunc(параметры)
 export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('characters-get', async (params) => {
@@ -17,18 +21,32 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
             })
             // @ts-ignore
             const newEquipResponse = await Promise.all(newEquip)
+
+
             return {...character, equipment: newEquipResponse}
         })
         const response = await Promise.all(charactersPromises)
         // return response
 
         const characters: CharactersReducedType = response.reduce((acc, character) => {
+
+            // Beta Characters Filter
+
+            if (character.flags?.find(f => f === 'Beta')) {
+                return {
+                    ...acc,
+                }
+            }
+
                 return {
                     ...acc, [character.name]: {
                         ...character
                     }
                 };
+
             }, {});
+
+
             return characters
     }
     return {}

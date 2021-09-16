@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid} from "@material-ui/core";
 import styles from './characters.module.css'
 import {NavLink} from "react-router-dom";
-import {CharactersReducedType} from "../../api/gw2-api";
+import {CharactersReducedType} from "../../app/app-types";
 
 
 export const Characters = (props: { characters: CharactersReducedType }) => {

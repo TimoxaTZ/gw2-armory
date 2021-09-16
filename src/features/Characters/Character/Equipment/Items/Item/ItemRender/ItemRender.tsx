@@ -1,5 +1,5 @@
 import React from "react";
-import {StatsType} from "../ItemToRender";
+import {ItemRenderPropsType} from "../../../../../../../app/app-types";
 
 export const ItemRender = (props: ItemRenderPropsType) => {
 
@@ -59,27 +59,4 @@ export const ItemRender = (props: ItemRenderPropsType) => {
 
     </div>
 }
-export type ItemRenderPropsType = {
-    itemIcon: string,
-    itemName: string,
-    defenseTooltip: string | null,
-    itemTypeTooltip: string,
-    itemRarity: string,
-    itemWeightClass?: string,
-    itemStats?: AttributesType | undefined
-    statsOfItem?: string
-    // itemId: number,
-}
 
-export type AttributesType = {
-    Power?: number,
-    Precision?: number,
-    CritDamage?: number,
-    AgonyResistance?: number,
-    BoonDuration?: number,
-    ConditionDamage?: number,
-    ConditionDuration?: number,
-    Healing?: number,
-    Toughness?: number,
-    Vitality?: number,
-}

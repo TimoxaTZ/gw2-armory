@@ -10,7 +10,7 @@ import {useAppSelector} from "../app/useAppSelector";
 import {Character} from "../features/Characters/Character/Character";
 import {getCharactersTC} from "../features/Characters/characters-reducer";
 import {useDispatch} from "react-redux";
-import {CharactersReducedType, StatusType} from "../api/gw2-api";
+import {CharactersReducedType, StatusType} from "../app/app-types";
 
 
 export const Main = () => {
@@ -29,6 +29,8 @@ export const Main = () => {
     characters ? status = 'succeed' : status = "loading"
 
     const urls = Object.keys(characters)
+
+    // console.log(characters['Shico Player'].flags)
 
     if (status !== "succeed") {
         return (
