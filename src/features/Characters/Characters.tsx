@@ -1,18 +1,13 @@
 import React, {useEffect} from 'react';
-import {CircularProgress, Container, Grid} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 import {useDispatch} from "react-redux";
 import styles from './characters.module.css'
-import {getCharactersTC} from "./characters-reducer";
+import {CharactersReducedType, getCharactersTC} from "./characters-reducer";
+import {NavLink} from "react-router-dom";
 import {useAppSelector} from "../../app/useAppSelector";
-import {NavLink, Redirect, Route} from "react-router-dom";
-import { Character } from './Character/Character';
-import { Token } from '../Token/Token';
-import {CharacterType} from "../../api/gw2-api";
-import {StatusType} from "./Character/Equipment/ItemsToRender/items-reducer";
-import {Header} from "../../components/header/header";
 
 
-export const Characters = (props: {characters:string[]}) => {
+export const Characters = (props: {characters: CharactersReducedType}) => {
 
     const token = localStorage.getItem('token')
 
@@ -23,6 +18,8 @@ export const Characters = (props: {characters:string[]}) => {
     }, [dispatch])
 
 
+    const charactersList = Object.keys(props.characters)
+
     return (
         <div className={styles.intro}>
 
@@ -31,15 +28,14 @@ export const Characters = (props: {characters:string[]}) => {
                     item xs zeroMinWidth
                     justifyContent="center"
                     alignItems="center">
-
-                    {props.characters.map((character:string) =>
+                    {charactersList.map((character:string) =>
                                 <div className={styles.textfield}>
                                     <NavLink className={styles.nav} to={`/characters/${character}`}>
                                         <span>
                                             {character}
                                         </span>
                                     </NavLink>
-                                </div>)//
+                                </div>)
                     }
                 </Grid>
         </div>

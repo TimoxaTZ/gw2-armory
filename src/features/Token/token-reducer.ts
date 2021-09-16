@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {AccountType, armoryApi} from "../../api/gw2-api";
-import {ErrorType} from "../Characters/Character/character-reducer";
 
 
 export const setTokenTC = createAsyncThunk<AccountType, string, ErrorType>('set-account', async (params)=> {
@@ -26,3 +25,10 @@ const slice = createSlice({
 
 
 export const tokenReducer = slice.reducer;
+
+export type ErrorType = {
+    rejectValue: {
+        error?: string,
+        text?: string
+    }
+}

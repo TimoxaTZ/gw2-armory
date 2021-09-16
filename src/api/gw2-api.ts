@@ -1,8 +1,6 @@
-import axios from "axios";
 import {instance} from "./instance";
-import {StatusType} from "../features/Characters/Character/Equipment/ItemsToRender/items-reducer";
 import {StatsType} from "../features/Characters/Character/Equipment/ItemsToRender/ItemToRender";
-import {EquipmentType} from "../features/Characters/Character/Equipment/ItemsData";
+import {EquipmentType} from "../features/Characters/characters-reducer";
 
 
 //GW2 Api

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {CharacterType} from "../../../api/gw2-api";
 import styles from './character.module.css'
 import buttonStyles from './../../../components/content/buttons/button.module.css'
 import {Button} from '../../../components/content/buttons/button';
 import {ItemToRender} from "./Equipment/ItemsToRender/ItemToRender";
+
+
 
 export const Character = (props: {character: CharacterType}) => {
 
@@ -15,7 +17,6 @@ export const Character = (props: {character: CharacterType}) => {
                 </h1>
                 <h2 >
                     <ItemToRender equipment={props.character.equipment}/>
-                    {/*<ItemsData name={props.name}/>*/}
                 </h2>
             </div>
             <div className={buttonStyles.buttons}>
