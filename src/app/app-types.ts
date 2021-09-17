@@ -31,7 +31,7 @@ export type EquipmentType = {
     slot: string,
     upgrades: [],
     infusions?: [],
-    stats: { id: number, attributes: {} }
+    stats?: { id: number, attributes: {} }
     skin: number,
     binding: string,
     bound_to: string
@@ -67,6 +67,7 @@ export type CharacterType = {
     // "race"?: string,
     // "gender"?: string,
     "flags"?: [],
+    stats?: {id: number, attributes: {}}
     // "profession"?: string,
     // "level"?: 80,
     // "guild"?: string,
@@ -90,6 +91,7 @@ export type ItemType = {
     binding: string
     bound_to: string
     id: number
+    stats?: {id: number, attributes: {}}
     skin: number
     slot: string
     statsStorage: {
@@ -127,7 +129,7 @@ export type ItemType = {
         },
         stats?: StatsType
     }
-    upgrades: [24739]
+    upgrades: [number]
 
     // status?: StatusType
     text?: 'no such id'
