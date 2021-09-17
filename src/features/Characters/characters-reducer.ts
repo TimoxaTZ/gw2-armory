@@ -18,40 +18,53 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
                }
             })
             // @ts-ignore
+
+            // emel.now.All(e(g)).whatIs(low).each(121).copy(rf)
+
             const newEquipResponse = await Promise.all(newEquip)
 
+            //Преобразование infix_upgrade статов в item.stats
             const statsReducedEquip = newEquipResponse.map(async (item) => {
                try {
-                   const newStats = item.stats
-                   const newAttributes = newStats?.attributes
+                   const itemHasStats = item.stats
+                   // Проверяем наличие статов на шмотке, если их нет, запускаем преобразование
+                   if (!itemHasStats) {
+                       // Получаем statsStorage у шмотки
+                       const itemStatsStorage = item.statsStorage as EquipmentType["statsStorage"]
+                       // Зануляем возможность storage быть undefined
+                       if (itemStatsStorage) {
+                           // получаем статы образца infix_upgrade
+                           const infixUpgradeAttributes  = itemStatsStorage.details.infix_upgrade.attributes
+                           // Преобразуем статы из вида {attribute: 'Power', modifier: 100}
+                           // в массив объектов вида [{Power: 100}]
+                           const attributesArray = infixUpgradeAttributes.map((stat:InfixUpgradeAttributesType) => {
+                               const attribute:InfixUpgradeAttributesType = stat;
+                               return {[attribute.attribute]: attribute.modifier}
+                           })
+                           // преобразовываем массив объектов [{Power: 100}, {Precision:50}, {Ferocity: 50}]
+                           // в ассоциативный массив {Power: 100, Precision: 50, Ferocity: 50}
+                           const attributesObject = Object.assign({}, ...attributesArray)
+                           // получаем объект вида {id: 0, attributes: {Power: 100, Precision: 50, Ferocity: 50}}
+                           const reducedStats = {id: 0, attributes: attributesObject}
+                           // возвращаем предмет, но с добавленным атрибутом "stats"
+                           return {...item, stats: reducedStats}
+                       }
+                   }  return {...item}
 
-                   if (newAttributes) {
-                       // console.log(newStats)
-                   }
-                   const oldStats = item.statsStorage as EquipmentType["statsStorage"]
-                   // console.log(oldStats)
 
-                   if (oldStats) {
-                       const oldAttributes = oldStats.details.infix_upgrade.attributes
-                       // console.log(oldAttributes)
-
-                       const attributes = oldAttributes.map(stat => {
-                           const attribute:OldAttributesType = stat;
-                           return {[attribute.attribute]: attribute.modifier}
-                       })
-                       const reducedAttributes = Object.assign({}, ...attributes)
-                       // console.log(reducedAttributes)
-                       const reducedStats = {id: 0, attributes: reducedAttributes}
-                       console.log(reducedStats)
-                   }
                } catch (e) {
+                   //если что-то пошло не так, возвращаем изначальные данные
                    return item
                }
 
             })
 
-            // console.log({...character, equipment: newEquipResponse})
-            return {...character, equipment: newEquipResponse}
+            // Просим дождаться выполнения всех преобразований статов.
+            const statsReduceResponse = await Promise.all(statsReducedEquip)
+            console.log({...character, equipment: statsReduceResponse})
+
+            // return {...character, equipment: newEquipResponse}
+            return {...character, equipment: statsReduceResponse}
         })
 
 
@@ -99,8 +112,11 @@ const slice = createSlice({
 export const charactersReducer = slice.reducer;
 
 
-export type OldAttributesType = {
+export type InfixUpgradeAttributesType = {
     attribute: string,
     modifier: number
 }
+
+
+
 
