@@ -19,8 +19,6 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
             })
             // @ts-ignore
 
-            // emel.now.All(e(g)).whatIs(low).each(121).copy(rf)
-
             const newEquipResponse = await Promise.all(newEquip)
 
             //Преобразование infix_upgrade статов в item.stats
@@ -61,10 +59,12 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
 
             // Просим дождаться выполнения всех преобразований статов.
             const statsReduceResponse = await Promise.all(statsReducedEquip)
-            console.log({...character, equipment: statsReduceResponse})
+            // console.log({...character, equipment: statsReduceResponse})
 
-            // return {...character, equipment: newEquipResponse}
             return {...character, equipment: statsReduceResponse}
+
+            // console.log({...character, equipment: newEquipResponse})
+            // return {...character, equipment: newEquipResponse}
         })
 
 

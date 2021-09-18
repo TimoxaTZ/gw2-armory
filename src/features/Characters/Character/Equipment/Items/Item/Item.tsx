@@ -13,8 +13,8 @@ export const Item = (props: { item: ItemType }) => {
 
         let itemsTypeTooltip = currentItem.statsStorage.details.type ? currentItem.statsStorage.details.type : currentItem.statsStorage.type
         let defenseTooltip = currentItem.statsStorage.type === 'Armor' ? 'Defense: ' + currentItem.statsStorage.details.defense : null;
-        // console.log(currentItem.statsStorage.name)
-        // console.log(currentItem)
+
+        // console.log(currentItem.stats)
 
 
         return <ItemRender itemIcon={currentItem.statsStorage.icon}
