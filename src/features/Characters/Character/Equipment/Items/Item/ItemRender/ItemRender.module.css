@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+    font-size: 15px;
+    width: 350px;
+    min-height: 80px;
+}
+
+/* ------------------------ICONS BORDER---------------------------*/
+.iconBorder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    size: auto;
+}
+/* ------------------------ICONS BORDER---------------------------*/
+
+
+/* --------------------ICONS BORDER COLOR------------------------*/
+.LegendaryBorder {
+    border: rgb(158,24,157) solid;
+}
+.AscendedBorder {
+    border: rgb(250,63,155) solid;
+}
+.ExoticBorder {
+    border: rgb(255,164,22) solid;
+}
+.RareBorder {
+    border: rgb(252,208,33) solid;
+}
+.MasterworkBorder {
+    border: rgb(115, 147, 21) solid;
+}
+.FineBorder {
+    border: rgb(98,164,220) solid;
+}
+.BasicBorder {
+    border: rgba(236, 236, 236, 0.66) solid;
+}
+
+/* --------------------ICONS BORDER COLOR------------------------*/
+
+.itemName {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.itemType {
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: end;*/
+    /*align-items: flex-end;*/
+
+}
+
+.infoBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items:  flex-start;
+}
+
+.statsBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    margin-left: 5px;
+    font-size: 13px ;
+    /*max-height: 100px;*/
+}

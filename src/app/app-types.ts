@@ -158,7 +158,7 @@ export type ItemRenderPropsType = {
     itemRarity: string,
     itemWeightClass?: string,
     itemStats?: AttributesType | undefined
-    statsOfItem?: string
+    // itemStats?: {} | undefined
     // itemId: number,
 }
 export type AttributesType = {
