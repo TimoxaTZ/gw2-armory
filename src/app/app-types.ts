@@ -13,10 +13,7 @@ export type StatsType = {
         // Vitality?: number,
     }
 }
-export type GetCharacterType = {
-    apiKey: string,
-    characterName: string
-}
+
 export type ErrorType = {
     rejectValue: {
         error?: string,
@@ -34,7 +31,7 @@ export type EquipmentType = {
     stats?: { id: number, attributes: {} }
     skin: number,
     binding: string,
-    bound_to: string
+    bound_to: string,
     statsStorage?: {
         chat_link: [string],
         default_skin: number
@@ -149,6 +146,43 @@ export type AccountType = {
     "monthly_ap": number,
     "wvw_rank": number,
     token?: string
+}
+
+export type InfusionType = {
+    "name": string,
+    "description": string,
+    "type": string,
+    "level": number,
+    "rarity": string,
+    "vendor_value": number,
+    "game_types": string[],
+    "flags": string[],
+    "restrictions": [],
+    "id": number,
+    "chat_link": string[],
+    "icon": string,
+    "details": {
+        "type": string,
+        "flags": string[],
+        "infusion_upgrade_flags": [
+            string
+        ],
+        "attribute_adjustment": number,
+        "infix_upgrade": {
+            "id": number,
+            "buff": {
+                "skill_id": number,
+                "description": string,
+            },
+            "attributes": [
+                {
+                    "attribute": string,
+                    "modifier": number,
+                }
+            ]
+        },
+        "suffix": string
+    }
 }
 
 
