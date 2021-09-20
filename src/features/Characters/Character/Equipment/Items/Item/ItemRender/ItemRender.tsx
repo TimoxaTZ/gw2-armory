@@ -52,15 +52,16 @@ export const ItemRender = (props: ItemRenderPropsType) => {
                 {/*{props.defenseTooltip}*/}
             </div>
             <div  className={styles.statsBlock}>
-                {props.itemStats?.Power && <div> {`Power: ${props.itemStats?.Power}`}</div>}
-                {props.itemStats?.Precision && <div> {`Precision: ${props.itemStats?.Precision}`}</div>}
-                {props.itemStats?.CritDamage && <div> {`Ferocity: ${props.itemStats?.CritDamage}`}</div>}
-                {props.itemStats?.BoonDuration && <div> {`Concentration: ${props.itemStats?.BoonDuration}`}</div>}
-                {props.itemStats?.ConditionDamage && <div> {`Condition Damage: ${props.itemStats?.ConditionDamage}`}</div>}
-                {props.itemStats?.ConditionDuration && <div> {`Expertise: ${props.itemStats?.ConditionDuration}`}</div>}
-                {props.itemStats?.Healing && <div> {`Healing Power: ${props.itemStats?.Healing}`}</div>}
-                {props.itemStats?.Toughness && <div> {`Toughness: ${props.itemStats?.Toughness}`}</div>}
-                {props.itemStats?.Vitality && <div> {`Vitality: ${props.itemStats?.Vitality}`}</div>}
+                {props.itemStats && Object.keys(props.itemStats).map(stat => {{<div>{props.itemStats[stat]}</div>})}
+                {/*{props.itemStats?.Power && <div> {`Power: ${props.itemStats?.Power}`}</div>}*/}
+                {/*{props.itemStats?.Precision && <div> {`Precision: ${props.itemStats?.Precision}`}</div>}*/}
+                {/*{props.itemStats?.CritDamage && <div> {`Ferocity: ${props.itemStats?.CritDamage}`}</div>}*/}
+                {/*{props.itemStats?.BoonDuration && <div> {`Concentration: ${props.itemStats?.BoonDuration}`}</div>}*/}
+                {/*{props.itemStats?.ConditionDamage && <div> {`Condition Damage: ${props.itemStats?.ConditionDamage}`}</div>}*/}
+                {/*{props.itemStats?.ConditionDuration && <div> {`Expertise: ${props.itemStats?.ConditionDuration}`}</div>}*/}
+                {/*{props.itemStats?.Healing && <div> {`Healing Power: ${props.itemStats?.Healing}`}</div>}*/}
+                {/*{props.itemStats?.Toughness && <div> {`Toughness: ${props.itemStats?.Toughness}`}</div>}*/}
+                {/*{props.itemStats?.Vitality && <div> {`Vitality: ${props.itemStats?.Vitality}`}</div>}*/}
                 {/*{props.itemStats?.AgonyResistance && <div> {`Agony Resistance: ${props.itemStats?.AgonyResistance}`}</div>}*/}
             </div>
         </div>
