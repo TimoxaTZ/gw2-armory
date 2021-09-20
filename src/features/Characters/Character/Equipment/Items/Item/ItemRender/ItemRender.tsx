@@ -58,7 +58,7 @@ export const ItemRender:FC<OwnPropertyType> = (props) => {
                 {props.itemName}
             </div>
             <div>
-                {/*{props.defenseTooltip}*/}
+                {props.defenseTooltip}
             </div>
             <div className={styles.statsBlock}>
                 {props.itemStats && Object.keys(props.itemStats).map(stat =>
