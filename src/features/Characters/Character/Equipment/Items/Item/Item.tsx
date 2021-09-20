@@ -1,31 +1,29 @@
 import {ItemRender} from "./ItemRender/ItemRender";
-import React from "react";
+import React, {FC} from "react";
 import {ItemType} from "../../../../../../app/app-types";
 
+type OwnPropertyType = {
+    item: ItemType
+}
 
-export const Item = (props: { item: ItemType }) => {
+export const Item: FC<OwnPropertyType> = ({item}) => {
 
-    const currentItem = props.item
+    let itemsTypeTooltip = item.statsStorage.details.type ? item.statsStorage.details.type : item.statsStorage.type
+    let defenseTooltip = item.statsStorage.type === 'Armor' ? 'Defense: ' + item.statsStorage.details.defense : null;
 
 
-    if (currentItem) {
-
-        let itemsTypeTooltip = currentItem.statsStorage.details.type ? currentItem.statsStorage.details.type : currentItem.statsStorage.type
-        let defenseTooltip = currentItem.statsStorage.type === 'Armor' ? 'Defense: ' + currentItem.statsStorage.details.defense : null;
-
-        return <ItemRender itemIcon={currentItem.statsStorage.icon}
-                           itemName={currentItem.statsStorage.name}
-                           defenseTooltip={defenseTooltip}
-                           itemTypeTooltip={itemsTypeTooltip}
-                           itemRarity={currentItem.statsStorage.rarity}
-                           itemWeightClass={currentItem.statsStorage.details.weight_class}
-                           itemStats={currentItem.stats?.attributes}
+    return item ? <ItemRender itemIcon={item.statsStorage.icon}
+                              itemName={item.statsStorage.name}
+                              defenseTooltip={defenseTooltip}
+                              itemTypeTooltip={itemsTypeTooltip}
+                              itemRarity={item.statsStorage.rarity}
+                              itemWeightClass={item.statsStorage.details.weight_class}
+                              itemStats={item.stats?.attributes}
 
         />
-
-    }
-    return <div>
-        Loading...
-    </div>
+        :
+        <div>
+            Loading...
+        </div>
 
 }

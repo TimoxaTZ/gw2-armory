@@ -150,26 +150,37 @@ export type AccountType = {
     "wvw_rank": number,
     token?: string
 }
-export type ItemRenderPropsType = {
-    itemIcon: string,
-    itemName: string,
-    defenseTooltip: string | null,
-    itemTypeTooltip: string,
-    itemRarity: string,
-    itemWeightClass?: string,
-    itemStats?: AttributesType | undefined
-    // itemStats?: {} | undefined
-    // itemId: number,
-}
-export type AttributesType = {
-    Power?: number,
-    Precision?: number,
-    CritDamage?: number,
-    AgonyResistance?: number,
-    BoonDuration?: number,
-    ConditionDamage?: number,
-    ConditionDuration?: number,
-    Healing?: number,
-    Toughness?: number,
-    Vitality?: number,
-}
+
+
+//-------------------ENUM TIPISATION--------------------//
+// export type AttributesType = {
+//     Power?: number,
+//     Precision?: number,
+//     CritDamage?: number,
+//     AgonyResistance?: number,
+//     BoonDuration?: number,
+//     ConditionDamage?: number,
+//     ConditionDuration?: number,
+//     Healing?: number,
+//     Toughness?: number,
+//     Vitality?: number,
+// }
+
+// export enum AttributesType  {
+//     Power,
+//     Precision,
+//     CritDamage,
+//     AgonyResistance,
+//     BoonDuration ,
+//     ConditionDamage,
+//     ConditionDuration,
+//     Healing,
+//     Toughness,
+//     Vitality,
+// }
+// для всех ключей в энаме это будет ключ объекта, а его тип число
+// type EnumKeys = keyof typeof AttributesType;
+
+//-------------------ENUM TIPISATION--------------------//
+
+// NEVER USE UNDEFINED IN TYPISATION!!!!

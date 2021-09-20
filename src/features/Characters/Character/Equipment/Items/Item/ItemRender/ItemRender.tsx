@@ -1,10 +1,20 @@
-import React from "react";
-import {ItemRenderPropsType} from "../../../../../../../app/app-types";
+import React, {FC} from "react";
 import styles from './ItemRender.module.css'
 
-export const ItemRender = (props: ItemRenderPropsType) => {
+type OwnPropertyType = {
+    itemIcon: string,
+    itemName: string,
+    defenseTooltip: string | null,
+    itemTypeTooltip: string,
+    itemRarity: string,
+    itemWeightClass?: string,
+    itemStats?: {
+        [key: string]: number
+    }
+}
 
-    // console.log(props.itemRarity)
+export const ItemRender:FC<OwnPropertyType> = (props) => {
+
 
     // @ts-ignore
     let rarityStyle: styles.BasicBorder
@@ -38,7 +48,6 @@ export const ItemRender = (props: ItemRenderPropsType) => {
     return <div className={styles.container}>
 
         <div >
-        {/*<div>*/}
             <div className={styles.iconBorder}>
                 <img className={rarityStyle} src={props.itemIcon}></img>
             </div>
@@ -51,23 +60,10 @@ export const ItemRender = (props: ItemRenderPropsType) => {
             <div>
                 {/*{props.defenseTooltip}*/}
             </div>
-            <div  className={styles.statsBlock}>
-                {props.itemStats && Object.keys(props.itemStats).map(stat => {{<div>{props.itemStats[stat]}</div>})}
-                {/*{props.itemStats?.Power && <div> {`Power: ${props.itemStats?.Power}`}</div>}*/}
-                {/*{props.itemStats?.Precision && <div> {`Precision: ${props.itemStats?.Precision}`}</div>}*/}
-                {/*{props.itemStats?.CritDamage && <div> {`Ferocity: ${props.itemStats?.CritDamage}`}</div>}*/}
-                {/*{props.itemStats?.BoonDuration && <div> {`Concentration: ${props.itemStats?.BoonDuration}`}</div>}*/}
-                {/*{props.itemStats?.ConditionDamage && <div> {`Condition Damage: ${props.itemStats?.ConditionDamage}`}</div>}*/}
-                {/*{props.itemStats?.ConditionDuration && <div> {`Expertise: ${props.itemStats?.ConditionDuration}`}</div>}*/}
-                {/*{props.itemStats?.Healing && <div> {`Healing Power: ${props.itemStats?.Healing}`}</div>}*/}
-                {/*{props.itemStats?.Toughness && <div> {`Toughness: ${props.itemStats?.Toughness}`}</div>}*/}
-                {/*{props.itemStats?.Vitality && <div> {`Vitality: ${props.itemStats?.Vitality}`}</div>}*/}
-                {/*{props.itemStats?.AgonyResistance && <div> {`Agony Resistance: ${props.itemStats?.AgonyResistance}`}</div>}*/}
+            <div className={styles.statsBlock}>
+                {props.itemStats && Object.keys(props.itemStats).map(stat =>
+                    <div>{stat} : {props.itemStats && props.itemStats[stat]}</div>)}
             </div>
-        </div>
-
-        <div>
-
         </div>
 
         <div className={styles.itemType}>
@@ -80,9 +76,7 @@ export const ItemRender = (props: ItemRenderPropsType) => {
             <div>
                 {props.itemTypeTooltip}
             </div>
-
         </div>
-
     </div>
 }
 
