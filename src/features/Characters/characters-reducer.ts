@@ -23,6 +23,7 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
 
             const newEquipResponse = await Promise.all(newEquip)
 
+            // ---------------------------STATS----------------------------
 
             //Преобразование infix_upgrade статов в item.stats
             const statsReducedEquip = newEquipResponse.map(async (item) => {
@@ -61,41 +62,43 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
                 }
 
             })
+            // ---------------------------STATS----------------------------
 
+            // -------------------------INFUSIONS--------------------------
 
             // Просим дождаться выполнения всех преобразований статов.
             const statsReduceResponse = await Promise.all(statsReducedEquip)
 
+            // Преобразуем эквип с преобразованными статами в эквип с инфьюзками.
             const infusionsReduceEquip = statsReduceResponse.map(async item => {
+                try {
+                    const currentInfusions: any = item.infusions?.map(async (infusion: number) => {
+                        try {
+                            // Получаем список инфьюзок в итемах по их айдишнику через API
+                            const infusionsData = await armoryApi.getItem(infusion)
+                            // если инфьюзка есть в итеме, возвращаем вместо айдишника объект {[id]: {infusionData}
+                            return {[infusion]: infusionsData.data}
+                        } catch (e) {
+                            return item
+                        }
+                    })
+                    // дожидаемся выполнения промиса получения даты инфьюзок
+                    const currentInfusionsResponse = await Promise.all(currentInfusions)
+                    // преобразуем объект [{id: {data}}] в ассоциативный массив {id: {data}}
+                    const infusionsResponseObj = Object.assign({}, ...currentInfusionsResponse)
 
-                const currentInfusions: any = item.infusions?.map(async (infusion: number) => {
-                    try {
-                        const infusionsData = await armoryApi.getItem(infusion)
-                        return {[infusion]: infusionsData.data}
-                    } catch (e) {
-                        return item
-                    }
-                })
-                const currentInfusionsResponse = await Promise.all(currentInfusions)
-
-
-                const infusionsResponseObj = Object.assign({}, ...currentInfusionsResponse)
-
-                return {...item, infusions: infusionsResponseObj}
-
+                    return {...item, infusions: infusionsResponseObj}
+                } catch (e) {
+                    return item
+                }
             })
 
-
             const infusionsReduceResponse = await Promise.all(infusionsReduceEquip)
-            // fcked up here.
-            // console.log(infusionsReduceResponse)
 
-
-
-            return {...character, equipment: statsReduceResponse}
+            return {...character, equipment: infusionsReduceResponse}
 
         })
-
+        // -------------------------INFUSIONS--------------------------
 
         const response = await Promise.all(charactersPromises)
 
