@@ -1,74 +1,138 @@
-.container {
+
+/* --------------------ICONS BORDER COLOR------------------------*/
+.LegendaryBorder {
+    width: 70%;
+    border: rgb(158,24,157) solid;
+}
+.AscendedBorder {
+    width: 70%;
+    border: rgb(250,63,155) solid;
+}
+.ExoticBorder {
+    width: 70%;
+    border: rgb(255,164,22) solid;
+}
+.RareBorder {
+    width: 70%;
+    border: rgb(252,208,33) solid;
+}
+.MasterworkBorder {
+    width: 70%;
+    border: rgb(115, 147, 21) solid;
+}
+.FineBorder {
+    width: 70%;
+    border: rgb(98,164,220) solid;
+}
+.BasicBorder {
+    width: 70%;
+    border: rgba(236, 236, 236, 0.66) solid;
+}
+
+/* --------------------ICONS BORDER COLOR------------------------*/
+
+
+/*REDESIGN STYLING OF ITEM TOOLTIP*/
+
+.itemContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: start;
-    justify-content: space-between;
+    justify-content: left;
     font-size: 15px;
     width: 350px;
     min-height: 80px;
 }
 
-/* ------------------------ICONS BORDER---------------------------*/
-.iconBorder {
+.itemTitleAndIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    margin-left: -2.5%;
+}
+
+
+.itemIcon {
+    width: 70%;
+    border: rgb(158,24,157) solid;
+}
+
+.itemIconBorder {
     display: flex;
     justify-content: center;
     align-items: center;
     size: auto;
 }
-/* ------------------------ICONS BORDER---------------------------*/
-
-
-/* --------------------ICONS BORDER COLOR------------------------*/
-.LegendaryBorder {
-    border: rgb(158,24,157) solid;
-}
-.AscendedBorder {
-    border: rgb(250,63,155) solid;
-}
-.ExoticBorder {
-    border: rgb(255,164,22) solid;
-}
-.RareBorder {
-    border: rgb(252,208,33) solid;
-}
-.MasterworkBorder {
-    border: rgb(115, 147, 21) solid;
-}
-.FineBorder {
-    border: rgb(98,164,220) solid;
-}
-.BasicBorder {
-    border: rgba(236, 236, 236, 0.66) solid;
-}
-
-/* --------------------ICONS BORDER COLOR------------------------*/
 
 .itemName {
     font-weight: 700;
     font-size: 14px;
 }
 
-.itemType {
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*justify-content: end;*/
-    /*align-items: flex-end;*/
-
-}
-
-.infoBlock {
+.itemInfoBlock {
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items:  flex-start;
+    padding-top: 3px;
 }
 
-.statsBlock {
+.itemStatsInfo {
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    margin-left: 5px;
-    font-size: 13px ;
-    /*max-height: 100px;*/
+    justify-content: left;
+    align-items: start;
+    font-size: 13px;
+    padding-top: 2px;
 }
+
+.itemStatsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    padding-top: 2px;
+}
+
+/*---------------INFUSIONS--------------------------*/
+
+.infusionTitleAndIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    margin-left: -3%;
+    margin-top: 1%;
+}
+
+.infusionIcon {
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    width: 30%;
+    border: rgb(158,24,157) solid 1px;
+}
+
+.infusionName {
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.itemInfusionInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    font-size: 12px;
+}
+
+.itemInfusionContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+}
+
+
+

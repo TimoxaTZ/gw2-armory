@@ -1,17 +1,6 @@
 export type StatsType = {
     id: number,
-    attributes: {
-        // Power?: number,
-        // Precision?: number,
-        // CritDamage?: number,
-        // AgonyResistance?: number,
-        // BoonDuration?: number,
-        // ConditionDamage?: number,
-        // ConditionDuration?: number,
-        // Healing?: number,
-        // Toughness?: number,
-        // Vitality?: number,
-    }
+    attributes: {}
 }
 
 export type ErrorType = {
@@ -58,6 +47,7 @@ export type EquipmentType = {
         vendor_value: number
     }
 }
+
 export type StatusType = 'loading' | 'succeed' | 'failed'
 export type CharacterType = {
     "name": string,

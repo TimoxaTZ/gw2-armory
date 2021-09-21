@@ -70,7 +70,7 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
             const statsReduceResponse = await Promise.all(statsReducedEquip)
 
             // Преобразуем эквип с преобразованными статами в эквип с инфьюзками.
-            const infusionsReduceEquip = statsReduceResponse.map(async item => {
+            const infusionsReduceEquip = statsReduceResponse.map(async (item) => {
                 try {
                     const currentInfusions: any = item.infusions?.map(async (infusion: number) => {
                         try {
