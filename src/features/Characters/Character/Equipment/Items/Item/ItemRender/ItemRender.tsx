@@ -151,9 +151,7 @@ export const ItemRender: FC<OwnPropertyType> = (props)  => {
                     {props.requiredLevel !== 0 && <div>Required Level: {props.requiredLevel}</div>}
                 </div>
                 <div className={styles.infusionName}>
-                    <div>
-                        Bound on {props.itemBinding}
-                    </div>
+                    <div>{props.itemBinding}</div>
                 </div>
 
             </div>

@@ -9,29 +9,18 @@ type OwnPropertyType = {
 export const Item: FC<OwnPropertyType> = ({item}) => {
 
     let itemsTypeTooltip = item.statsStorage.details.type ? item.statsStorage.details.type : item.statsStorage.type
-    let defenseTooltip = item.statsStorage.type === 'Armor' ? 'Defense: ' + item.statsStorage.details.defense : null;
-    console.log(item)
-
-
-    // return item ? <ItemRender itemIcon={item.statsStorage.icon}
-    //                           itemName={item.statsStorage.name}
-    //                           defenseTooltip={defenseTooltip}
-    //                           itemTypeTooltip={itemsTypeTooltip}
-    //                           itemRarity={item.statsStorage.rarity}
-    //                           itemWeightClass={item.statsStorage.details.weight_class}
-    //                           itemStats={item.stats?.attributes}
-    //
-    //     />
+    let itemDefenseTooltip = item.statsStorage.type === 'Armor' ? 'Defense: ' + item.statsStorage.details.defense : null;
+    let itemBoundOn = item.bound_to ? 'Soulbound on ' + item.bound_to : 'Bound on ' + item.binding
 
     return item ? <ItemRender
             itemIcon={item.statsStorage.icon}
             itemName={item.statsStorage.name}
-            defenseTooltip={defenseTooltip}
+            defenseTooltip={itemDefenseTooltip}
             itemTypeTooltip={itemsTypeTooltip}
             itemRarity={item.statsStorage.rarity}
             itemWeightClass={item.statsStorage.details.weight_class}
             itemStats={item.stats?.attributes}
-            itemBinding={item.binding}
+            itemBinding={itemBoundOn}
             requiredLevel={item.statsStorage.level}
         />
 
