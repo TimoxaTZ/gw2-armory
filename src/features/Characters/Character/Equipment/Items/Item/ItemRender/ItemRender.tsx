@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import styles from './ItemRender.module.css'
-import icon from '../../../../../../../assets/images/incinerator.png'
+import {InfusionType} from "../../../../../../../app/app-types";
 
 
 type OwnPropertyType = {
@@ -15,6 +15,7 @@ type OwnPropertyType = {
         [key: string]: number
     }
     requiredLevel?: number
+    itemInfusions?: {[key:string]: InfusionType}
 }
 
 export const ItemRender: FC<OwnPropertyType> = (props)  => {
@@ -47,6 +48,7 @@ export const ItemRender: FC<OwnPropertyType> = (props)  => {
         default: rarityStyle = ''
     }
 
+
     return <div className={styles.itemContainer}>
 
                     {/*ITEM ICON AND TITLE*/}
@@ -70,25 +72,50 @@ export const ItemRender: FC<OwnPropertyType> = (props)  => {
             </div>
         </div>
                   {/*INFUSIONS*/}
-        <div className={styles.infusionTitleAndIcon}>
-            <div>
-                <div className={styles.itemIconBorder}>
-                    {/*<img className={styles.infusionIcon} src={icon}/>*/}
-                </div>
-            </div>
+            {props.itemInfusions && Object.keys(props.itemInfusions).map(infusion => {
 
-            <div className={styles.itemInfoBlock}>
-                <div className={styles.infusionName}>
-                    {/*Very Long Annoying Infusion*/}
-                </div>
-                <div className={styles.itemInfusionInfo}>
-                    <div className={styles.itemInfusionContainer}>
-                        {/*<div>+5 Precision</div>*/}
-                        {/*<div>+9 Agony Resistance</div>*/}
+                return (
+                    <div className={styles.infusionTitleAndIcon}>
+                    <div>
+                        <div className={styles.itemIconBorder}>
+                            <img className={styles.infusionIcon} src={props.itemInfusions && props.itemInfusions[infusion].icon}/>
+                        </div>
+                    </div>
+
+                    <div className={styles.itemInfoBlock}>
+                        <div className={styles.infusionName}>
+                            {props.itemInfusions && props.itemInfusions[infusion].name}
+                        </div>
+                        <div className={styles.itemInfusionInfo}>
+                            <div className={styles.itemInfusionContainer}>
+                                {props.itemInfusions && props.itemInfusions[infusion].details.infix_upgrade.buff.description}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                )
+            })}
+
+
+        {/*<div className={styles.infusionTitleAndIcon}>*/}
+        {/*    <div>*/}
+        {/*        <div className={styles.itemIconBorder}>*/}
+        {/*            /!*<img className={styles.infusionIcon} src={icon}/>*!/*/}
+        {/*        </div>*/}
+        {/*    </div>*/}
+
+        {/*    <div className={styles.itemInfoBlock}>*/}
+        {/*        <div className={styles.infusionName}>*/}
+        {/*            /!*Very Long Annoying Infusion*!/*/}
+        {/*        </div>*/}
+        {/*        <div className={styles.itemInfusionInfo}>*/}
+        {/*            <div className={styles.itemInfusionContainer}>*/}
+        {/*                /!*<div>+5 Precision</div>*!/*/}
+        {/*                /!*<div>+9 Agony Resistance</div>*!/*/}
+        {/*            </div>*/}
+        {/*        </div>*/}
+        {/*    </div>*/}
+        {/*</div>*/}
                     {/*RUNES*/}
         <div className={styles.infusionTitleAndIcon}>
             <div>

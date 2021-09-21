@@ -1,6 +1,6 @@
 import {ItemRender} from "./ItemRender/ItemRender";
 import React, {FC} from "react";
-import {ItemType} from "../../../../../../app/app-types";
+import {InfusionType, ItemType} from "../../../../../../app/app-types";
 
 type OwnPropertyType = {
     item: ItemType
@@ -22,6 +22,7 @@ export const Item: FC<OwnPropertyType> = ({item}) => {
             itemStats={item.stats?.attributes}
             itemBinding={itemBoundOn}
             requiredLevel={item.statsStorage.level}
+            itemInfusions={item.infusions}
         />
 
         :

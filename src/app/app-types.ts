@@ -117,6 +117,7 @@ export type ItemType = {
         stats?: StatsType
     }
     upgrades: [number]
+    infusions: {infusion: InfusionType}
 
     // status?: StatusType
     text?: 'no such id'
