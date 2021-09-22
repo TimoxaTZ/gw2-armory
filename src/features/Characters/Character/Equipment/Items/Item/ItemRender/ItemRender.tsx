@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import styles from './ItemRender.module.css'
-import {InfusionType} from "../../../../../../../app/app-types";
+import {InfusionType, UpgradeType} from "../../../../../../../app/app-types";
 
 
 type OwnPropertyType = {
@@ -16,6 +16,7 @@ type OwnPropertyType = {
     }
     requiredLevel?: number
     itemInfusions?: {[key:string]: InfusionType}
+    itemUpgrades?: {[key:number]: UpgradeType}
 }
 
 export const ItemRender: FC<OwnPropertyType> = (props)  => {
@@ -96,7 +97,32 @@ export const ItemRender: FC<OwnPropertyType> = (props)  => {
                 )
             })}
 
+        {props.itemUpgrades && Object.keys(props.itemUpgrades).map(upgrade => {
 
+            return (
+                <div className={styles.infusionTitleAndIcon}>
+                    <div>
+                        <div className={styles.itemIconBorder}>
+                            {/*<img className={styles.infusionIcon} src={props.itemUpgrades && props.itemUpgrades[upgrade].icon}/>*/}
+                            {/*{console.log(props.itemUpgrades && props.itemUpgrades[upgrade])}*/}
+                        </div>
+                    </div>
+
+                    <div className={styles.itemInfoBlock}>
+                        <div className={styles.infusionName}>
+                            {/*{props.itemUpgrades && props.itemUpgrades[upgrade].name}*/}
+                        </div>
+                        <div className={styles.itemInfusionInfo}>
+                            <div className={styles.itemInfusionContainer}>
+                                {/*{props.itemUpgrades && props.itemUpgrades[upgrade].details.infix_upgrade.buff.description}*/}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        })}
+
+                    {/*RUNES*/}
         {/*<div className={styles.infusionTitleAndIcon}>*/}
         {/*    <div>*/}
         {/*        <div className={styles.itemIconBorder}>*/}
@@ -106,40 +132,20 @@ export const ItemRender: FC<OwnPropertyType> = (props)  => {
 
         {/*    <div className={styles.itemInfoBlock}>*/}
         {/*        <div className={styles.infusionName}>*/}
-        {/*            /!*Very Long Annoying Infusion*!/*/}
+        {/*            /!*Big Boss Rune Of the Pack*!/*/}
         {/*        </div>*/}
         {/*        <div className={styles.itemInfusionInfo}>*/}
         {/*            <div className={styles.itemInfusionContainer}>*/}
-        {/*                /!*<div>+5 Precision</div>*!/*/}
-        {/*                /!*<div>+9 Agony Resistance</div>*!/*/}
+        {/*                /!*<div>(1) Rune set bonus one </div>*!/*/}
+        {/*                /!*<div>(2) Rune set bonus two </div>*!/*/}
+        {/*                /!*<div>(3) Rune set bonus three </div>*!/*/}
+        {/*                /!*<div>(4) Rune set bonus four </div>*!/*/}
+        {/*                /!*<div>(5) Rune set bonus five </div>*!/*/}
+        {/*                /!*<div>(6) Rune set bonus full </div>*!/*/}
         {/*            </div>*/}
         {/*        </div>*/}
         {/*    </div>*/}
         {/*</div>*/}
-                    {/*RUNES*/}
-        <div className={styles.infusionTitleAndIcon}>
-            <div>
-                <div className={styles.itemIconBorder}>
-                    {/*<img className={styles.infusionIcon} src={icon}/>*/}
-                </div>
-            </div>
-
-            <div className={styles.itemInfoBlock}>
-                <div className={styles.infusionName}>
-                    {/*Big Boss Rune Of the Pack*/}
-                </div>
-                <div className={styles.itemInfusionInfo}>
-                    <div className={styles.itemInfusionContainer}>
-                        {/*<div>(1) Rune set bonus one </div>*/}
-                        {/*<div>(2) Rune set bonus two </div>*/}
-                        {/*<div>(3) Rune set bonus three </div>*/}
-                        {/*<div>(4) Rune set bonus four </div>*/}
-                        {/*<div>(5) Rune set bonus five </div>*/}
-                        {/*<div>(6) Rune set bonus full </div>*/}
-                    </div>
-                </div>
-            </div>
-        </div>
 
                        {/*TRANSMUTE*/}
 

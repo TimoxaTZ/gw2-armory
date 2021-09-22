@@ -12,6 +12,9 @@ export const Item: FC<OwnPropertyType> = ({item}) => {
     let itemDefenseTooltip = item.statsStorage.type === 'Armor' ? 'Defense: ' + item.statsStorage.details.defense : null;
     let itemBoundOn = item.bound_to ? 'Soulbound on ' + item.bound_to : 'Bound on ' + item.binding
 
+    console.log(item.upgrades)
+    console.log(item.infusions)
+
     return item ? <ItemRender
             itemIcon={item.statsStorage.icon}
             itemName={item.statsStorage.name}
@@ -23,6 +26,7 @@ export const Item: FC<OwnPropertyType> = ({item}) => {
             itemBinding={itemBoundOn}
             requiredLevel={item.statsStorage.level}
             itemInfusions={item.infusions}
+            itemUpgrades={item.upgrades}
         />
 
         :

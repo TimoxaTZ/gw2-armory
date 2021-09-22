@@ -176,6 +176,29 @@ export type InfusionType = {
     }
 }
 
+export type UpgradeType = {
+    chat_link: string[],
+    description: string,
+    details: {
+        attribute_adjustment: number
+        bonuses: string[]
+        flags:  string[]
+        infix_upgrade: {id: number, attributes: []}
+        infusion_upgrade_flags: []
+        suffix: string
+        type: string
+    }
+    flags: []
+    game_types: string[]
+    icon: string
+    id: number
+    level: number
+    name: string
+    rarity: string
+    restrictions: []
+    type: string
+} | number
+
 
 //-------------------ENUM TIPISATION--------------------//
 // export type AttributesType = {

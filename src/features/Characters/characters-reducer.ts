@@ -95,10 +95,34 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
 
             const infusionsReduceResponse = await Promise.all(infusionsReduceEquip)
 
-            return {...character, equipment: infusionsReduceResponse}
+            const upgradesReduceEquip = infusionsReduceResponse.map(async (item) => {
+                try {
+                    const currentUpgrades: any = item.upgrades?.map(async (upgrade:number) => {
+                        try {
+                           const upgradesData = await armoryApi.getItem(upgrade)
+                            return {[upgrade]: upgradesData.data}
+                        } catch (e) {
+                            return item
+                        }
+                    })
+
+                    const currentUpgradesResponse = await Promise.all(currentUpgrades)
+                    const upgradesResponseObj = Object.assign({}, ...currentUpgradesResponse)
+                    return {...item, upgrades: upgradesResponseObj}
+
+                } catch (e) {
+                    return item
+                }
+            })
+
+            const upgradesReduceResponse = await Promise.all(upgradesReduceEquip)
+
+            return {...character, equipment: upgradesReduceResponse}
 
         })
         // -------------------------INFUSIONS--------------------------
+
+
 
         const response = await Promise.all(charactersPromises)
 
