@@ -116,7 +116,8 @@ export type ItemType = {
         },
         stats?: StatsType
     }
-    upgrades: [number]
+    // upgrades: {[key: string]: UpgradeType}
+    upgrades: {upgrade: UpgradeType}
     infusions: {infusion: InfusionType}
 
     // status?: StatusType
@@ -197,7 +198,7 @@ export type UpgradeType = {
     rarity: string
     restrictions: []
     type: string
-} | number
+}
 
 
 //-------------------ENUM TIPISATION--------------------//

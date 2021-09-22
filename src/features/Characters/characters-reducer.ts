@@ -1,6 +1,13 @@
 import {armoryApi} from "../../api/gw2-api";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {CharactersReducedType, CharacterType, EquipmentType, ErrorType, InfusionType} from "../../app/app-types";
+import {
+    CharactersReducedType,
+    CharacterType,
+    EquipmentType,
+    ErrorType,
+    InfusionType,
+    UpgradeType
+} from "../../app/app-types";
 import {keys} from "@material-ui/core/styles/createBreakpoints";
 
 
@@ -97,7 +104,7 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
 
             const upgradesReduceEquip = infusionsReduceResponse.map(async (item) => {
                 try {
-                    const currentUpgrades: any = item.upgrades?.map(async (upgrade:number) => {
+                    const currentUpgrades = item.upgrades?.map(async (upgrade:number) => {
                         try {
                            const upgradesData = await armoryApi.getItem(upgrade)
                             return {[upgrade]: upgradesData.data}

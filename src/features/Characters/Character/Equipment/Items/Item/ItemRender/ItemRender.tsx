@@ -16,7 +16,7 @@ type OwnPropertyType = {
     }
     requiredLevel?: number
     itemInfusions?: {[key:string]: InfusionType}
-    itemUpgrades?: {[key:number]: UpgradeType}
+    itemUpgrades?: {[key:string]: UpgradeType}
 }
 
 export const ItemRender: FC<OwnPropertyType> = (props)  => {
@@ -99,22 +99,35 @@ export const ItemRender: FC<OwnPropertyType> = (props)  => {
 
         {props.itemUpgrades && Object.keys(props.itemUpgrades).map(upgrade => {
 
+
+
+
+            // const bonus = props.itemUpgrades && props.itemUpgrades[upgrade].details?.bonuses?.map(bonus => console.log(bonus))
+            // const bonus = props.itemUpgrades && props.itemUpgrades[upgrade].details?.bonuses?.forEach((item, index) => {
+            //     console.log(`(`+index+1 +`): `+item)
+            // })
+            // console.log(bonus)
+
+
+
+
             return (
                 <div className={styles.infusionTitleAndIcon}>
                     <div>
                         <div className={styles.itemIconBorder}>
-                            {/*<img className={styles.infusionIcon} src={props.itemUpgrades && props.itemUpgrades[upgrade].icon}/>*/}
-                            {/*{console.log(props.itemUpgrades && props.itemUpgrades[upgrade])}*/}
+                            <img className={styles.infusionIcon} src={props.itemUpgrades && props.itemUpgrades[upgrade].icon}/>
                         </div>
                     </div>
 
                     <div className={styles.itemInfoBlock}>
                         <div className={styles.infusionName}>
-                            {/*{props.itemUpgrades && props.itemUpgrades[upgrade].name}*/}
+                            {props.itemUpgrades && props.itemUpgrades[upgrade].name}
                         </div>
                         <div className={styles.itemInfusionInfo}>
                             <div className={styles.itemInfusionContainer}>
-                                {/*{props.itemUpgrades && props.itemUpgrades[upgrade].details.infix_upgrade.buff.description}*/}
+                                {/*{props.itemUpgrades && props.itemUpgrades[upgrade].details?.bonuses}*/}
+
+                                {props.itemUpgrades && props.itemUpgrades[upgrade].details.bonuses}
                             </div>
                         </div>
                     </div>
