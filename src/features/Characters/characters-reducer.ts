@@ -82,7 +82,7 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
                     const currentInfusions: any = item.infusions?.map(async (infusion: number) => {
                         try {
                             // Получаем список инфьюзок в итемах по их айдишнику через API
-                            const infusionsData = await armoryApi.getItem(infusion)
+                            const infusionsData = await armoryApi.getInfusions(infusion)
                             // если инфьюзка есть в итеме, возвращаем вместо айдишника объект {[id]: {infusionData}
                             return {[infusion]: infusionsData.data}
                         } catch (e) {
@@ -101,12 +101,15 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
             })
 
             const infusionsReduceResponse = await Promise.all(infusionsReduceEquip)
+            // -------------------------INFUSIONS--------------------------
 
+            // -----------------------UPGRADES------------------------------
             const upgradesReduceEquip = infusionsReduceResponse.map(async (item) => {
                 try {
                     const currentUpgrades = item.upgrades?.map(async (upgrade:number) => {
                         try {
-                           const upgradesData = await armoryApi.getItem(upgrade)
+                           const upgradesData = await armoryApi.getUpgrades(upgrade)
+                            // console.log(upgradesData.data.details.bonuses)
                             return {[upgrade]: upgradesData.data}
                         } catch (e) {
                             return item
@@ -127,12 +130,12 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
             return {...character, equipment: upgradesReduceResponse}
 
         })
-        // -------------------------INFUSIONS--------------------------
+        // -----------------------UPGRADES------------------------------
+
 
 
 
         const response = await Promise.all(charactersPromises)
-
 
         // return response
 

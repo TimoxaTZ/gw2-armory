@@ -119,6 +119,7 @@ export type ItemType = {
     // upgrades: {[key: string]: UpgradeType}
     upgrades: {upgrade: UpgradeType}
     infusions: {infusion: InfusionType}
+    details: UpgradeType
 
     // status?: StatusType
     text?: 'no such id'
