@@ -115,7 +115,7 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
                             // let prices = Object.fromEntries([[bonuses]]);
                             // console.log(prices)
                             // let set = new Set(bonuses)
-                            // console.log(set)
+                            // console.log(set) /
 
                             // const bonusesReduced = Object.entries(bonuses).map( async ([runesCount, setBonus]) => {
                             //     try {
