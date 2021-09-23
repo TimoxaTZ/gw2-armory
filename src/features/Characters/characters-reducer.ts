@@ -5,7 +5,7 @@ import {
     CharacterType,
     EquipmentType,
     ErrorType,
-    InfusionType,
+    InfusionType, ItemType,
     UpgradeType
 } from "../../app/app-types";
 import {keys} from "@material-ui/core/styles/createBreakpoints";
@@ -109,41 +109,37 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
                     const currentUpgrades = item.upgrades?.map(async (upgrade: number) => {
                         try {
                             const upgradesData = await armoryApi.getUpgrades(upgrade)
-                            const upgradeBonuses = upgradesData.data.details.bonuses && upgradesData.data.details.bonuses
+                            const upgrades = upgradesData.data
+                            const bonuses = upgrades.details.bonuses
 
-                            // console.log(upgradeBonuses)
-                            const currentBonus =  Object.entries(upgradeBonuses).map(([key, value]) => {
-                                return `(${parseInt(key)+1}): ${value}`
-                            })
-                            const bonusObject = Object.assign({}, currentBonus)
-                            console.log(bonusObject)
+                            // let prices = Object.fromEntries([[bonuses]]);
+                            // console.log(prices)
+                            // let set = new Set(bonuses)
+                            // console.log(set)
 
-                            // const bonusesArray = upgradeBonuses.map((bonus) => {
-                            //
-                            //
-                            //     // return
-                            //     // console.log(bonus)
-                            //     // console.log({...upgradeBonuses, bonus})
-                            //     // return {[]: bonus}
+                            // const bonusesReduced = Object.entries(bonuses).map( async ([runesCount, setBonus]) => {
+                            //     try {
+                            //         const bonusObject = {[`(${parseInt(runesCount)+1})`]: setBonus}
+                            //         return await bonusObject
+                            //     } catch (e) {
+                            //         return [runesCount,setBonus]
+                            //     }
+                            //     const bonusesReducedResponse = await Promise.all(bonusesReduced)
+                            //     console.log(bonusesReducedResponse)
                             // })
-                            // console.log(bonusesArray)
 
 
-                            // const upgradesObj = Object.assign({}, Object.assign({}, upgradeBonuses))
-
-
-                            // for (const [key, value] of Object.entries(upgradeBonuses)) {
-                            //     // upgradesData.data.details.bonuses && upgradesData.data.details.bonuses.map(u => {
-                            //         return `(${parseInt(key) + 1}): ${value}`
-                            //     // })
-                            // }
+                            const bonusesObj = Object.assign({}, bonuses)
+                            const assignedBonuses = Object.assign({}, bonusesObj)
 
 
 
-                            return {[upgrade]: upgradesData.data}
+                            return {[upgrade]: {...upgradesData.data, upgradesSetBonus: assignedBonuses}}
+
                         } catch (e) {
                             return item
                         }
+
                     })
 
                     const currentUpgradesResponse = await Promise.all(currentUpgrades)
@@ -157,6 +153,7 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
 
             const upgradesReduceResponse = await Promise.all(upgradesReduceEquip)
 
+            // console.log({...character, equipment: upgradesReduceResponse})
             return {...character, equipment: upgradesReduceResponse}
 
         })

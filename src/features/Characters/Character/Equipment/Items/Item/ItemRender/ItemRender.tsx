@@ -101,16 +101,6 @@ export const ItemRender: FC<OwnPropertyType> = (props)  => {
 
 
 
-
-            // const bonus = props.itemUpgrades && props.itemUpgrades[upgrade].details?.bonuses?.map(bonus => console.log(bonus))
-            // const bonus = props.itemUpgrades && props.itemUpgrades[upgrade].details?.bonuses?.forEach((item, index) => {
-            //     console.log(`(`+index+1 +`): `+item)
-            // })
-            // console.log(bonus)
-
-
-
-
             return (
                 <div className={styles.infusionTitleAndIcon}>
                     <div>
