@@ -111,11 +111,22 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
                             const upgradesData = await armoryApi.getUpgrades(upgrade)
                             const upgradeBonuses = upgradesData.data.details.bonuses && upgradesData.data.details.bonuses
 
-                            console.log(upgradeBonuses)
-
-                            const bonusesArray = upgradeBonuses.map((bonus) => {
-                                console.log(bonus)
+                            // console.log(upgradeBonuses)
+                            const currentBonus =  Object.entries(upgradeBonuses).map(([key, value]) => {
+                                return `(${parseInt(key)+1}): ${value}`
                             })
+                            const bonusObject = Object.assign({}, currentBonus)
+                            console.log(bonusObject)
+
+                            // const bonusesArray = upgradeBonuses.map((bonus) => {
+                            //
+                            //
+                            //     // return
+                            //     // console.log(bonus)
+                            //     // console.log({...upgradeBonuses, bonus})
+                            //     // return {[]: bonus}
+                            // })
+                            // console.log(bonusesArray)
 
 
                             // const upgradesObj = Object.assign({}, Object.assign({}, upgradeBonuses))
