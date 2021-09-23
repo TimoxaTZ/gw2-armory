@@ -106,10 +106,29 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
             // -----------------------UPGRADES------------------------------
             const upgradesReduceEquip = infusionsReduceResponse.map(async (item) => {
                 try {
-                    const currentUpgrades = item.upgrades?.map(async (upgrade:number) => {
+                    const currentUpgrades = item.upgrades?.map(async (upgrade: number) => {
                         try {
-                           const upgradesData = await armoryApi.getUpgrades(upgrade)
-                            // console.log(upgradesData.data.details.bonuses)
+                            const upgradesData = await armoryApi.getUpgrades(upgrade)
+                            const upgradeBonuses = upgradesData.data.details.bonuses && upgradesData.data.details.bonuses
+
+                            console.log(upgradeBonuses)
+
+                            const bonusesArray = upgradeBonuses.map((bonus) => {
+                                console.log(bonus)
+                            })
+
+
+                            // const upgradesObj = Object.assign({}, Object.assign({}, upgradeBonuses))
+
+
+                            // for (const [key, value] of Object.entries(upgradeBonuses)) {
+                            //     // upgradesData.data.details.bonuses && upgradesData.data.details.bonuses.map(u => {
+                            //         return `(${parseInt(key) + 1}): ${value}`
+                            //     // })
+                            // }
+
+
+
                             return {[upgrade]: upgradesData.data}
                         } catch (e) {
                             return item
@@ -131,8 +150,6 @@ export const getCharactersTC = createAsyncThunk<any, string, ErrorType>('charact
 
         })
         // -----------------------UPGRADES------------------------------
-
-
 
 
         const response = await Promise.all(charactersPromises)
