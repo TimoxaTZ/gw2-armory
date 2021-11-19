@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/gw2-armory/static/css/main.f2804900.chunk.css",
-    "main.js": "/gw2-armory/static/js/main.a7acd5ae.chunk.js",
-    "main.js.map": "/gw2-armory/static/js/main.a7acd5ae.chunk.js.map",
+    "main.js": "/gw2-armory/static/js/main.ae06ecdd.chunk.js",
+    "main.js.map": "/gw2-armory/static/js/main.ae06ecdd.chunk.js.map",
     "runtime-main.js": "/gw2-armory/static/js/runtime-main.b5dd0266.js",
     "runtime-main.js.map": "/gw2-armory/static/js/runtime-main.b5dd0266.js.map",
-    "static/js/2.fb8bfd78.chunk.js": "/gw2-armory/static/js/2.fb8bfd78.chunk.js",
-    "static/js/2.fb8bfd78.chunk.js.map": "/gw2-armory/static/js/2.fb8bfd78.chunk.js.map",
+    "static/js/2.7faabc1f.chunk.js": "/gw2-armory/static/js/2.7faabc1f.chunk.js",
+    "static/js/2.7faabc1f.chunk.js.map": "/gw2-armory/static/js/2.7faabc1f.chunk.js.map",
     "static/js/3.60a93ed4.chunk.js": "/gw2-armory/static/js/3.60a93ed4.chunk.js",
     "static/js/3.60a93ed4.chunk.js.map": "/gw2-armory/static/js/3.60a93ed4.chunk.js.map",
     "index.html": "/gw2-armory/index.html",
     "static/css/main.f2804900.chunk.css.map": "/gw2-armory/static/css/main.f2804900.chunk.css.map",
-    "static/js/2.fb8bfd78.chunk.js.LICENSE.txt": "/gw2-armory/static/js/2.fb8bfd78.chunk.js.LICENSE.txt",
+    "static/js/2.7faabc1f.chunk.js.LICENSE.txt": "/gw2-armory/static/js/2.7faabc1f.chunk.js.LICENSE.txt",
     "static/media/main.module.css": "/gw2-armory/static/media/background_8k.2e70ee0e.jpg",
     "static/media/logo.7ae7d579.jpg": "/gw2-armory/static/media/logo.7ae7d579.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.b5dd0266.js",
-    "static/js/2.fb8bfd78.chunk.js",
+    "static/js/2.7faabc1f.chunk.js",
     "static/css/main.f2804900.chunk.css",
-    "static/js/main.a7acd5ae.chunk.js"
+    "static/js/main.ae06ecdd.chunk.js"
   ]
 }
