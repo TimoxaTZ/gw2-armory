@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Grid} from "@material-ui/core";
 import styles from './characters.module.css'
 import {NavLink} from "react-router-dom";
 import {CharactersReducedType} from "../../app/app-types";
+import {getCharactersTC} from "./characters-reducer";
+import {useDispatch} from "react-redux";
 
 
 export const Characters = (props: { characters: CharactersReducedType }) => {
 
+    const token = localStorage.getItem('token')
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        token && dispatch(getCharactersTC(token));
+    }, [])
 
     const characters: CharactersReducedType = props.characters
     const charactersList: string[] = Object.keys(characters)

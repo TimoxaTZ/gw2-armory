@@ -10,8 +10,8 @@ export const Header = () => {
     const token = useAppSelector(state => state.token.account.token)
     // const token = null;
 
-    if (token !== null) {
-        return (
+    return token && token.length > 1 ?
+        (
             <header className={styles.header}>
                 <div className={styles.container}>
                     <div className={styles.header_inner}>
@@ -19,27 +19,30 @@ export const Header = () => {
                             <img src={logo} className={styles.logo}/> Guild wars 2 armory
                         </div>
                         <nav className={styles.nav}>
-                            <a href='/auth' className={styles.nav_link}>Change API-key</a>
+                            {/*<a href='/auth' className={styles.nav_link}>Change API-key</a>*/} {/*default URL*/}
+                            <a href='/gw2-armory/#/auth' className={styles.nav_link}>Change
+                                API-key</a> {/*for github pages*/}
                         </nav>
                     </div>
                 </div>
             </header>
         )
-    }
 
-    return (
-        <header className={styles.header}>
-            <div className={styles.container}>
-                <div className={styles.header_inner}>
-                    <div className={styles.header_logo}>
-                        <img src={logo} className={styles.logo}/> Guild wars 2 armory
+        : (
+            <header className={styles.header}>
+                <div className={styles.container}>
+                    <div className={styles.header_inner}>
+                        <div className={styles.header_logo}>
+                            <img src={logo} className={styles.logo}/> Guild wars 2 armory
+                        </div>
+                        <nav className={styles.nav}>
+                            {/*<a href='/' className={styles.nav_link}>About</a>*/} {/*default URL*/}
+                            {/*<a href='/auth'  className={styles.nav_link}>Login</a>*/} {/*default URL*/}
+                            <a href='/gw2-armory/' className={styles.nav_link}>About</a> {/*for github pages*/}
+                            <a href='/gw2-armory/#/auth' className={styles.nav_link}>Login</a> {/*for github pages*/}
+                        </nav>
                     </div>
-                    <nav className={styles.nav}>
-                            <a href='/' className={styles.nav_link}>About</a>
-                            <a href='/auth'  className={styles.nav_link}>Login</a>
-                    </nav>
                 </div>
-            </div>
-        </header>
-    )
+            </header>
+        )
 }
